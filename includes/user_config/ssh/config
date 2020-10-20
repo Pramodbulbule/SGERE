@@ -17,7 +17,3 @@ Host edge4
 Host edge5
   User username-placeholder
   Hostname 192.168.8.32
-
-Host test-edge
-  User username-placeholder
-  Hostname 192.168.1.50

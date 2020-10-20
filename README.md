@@ -34,23 +34,23 @@ New users needs be added to:
 
 3. Create users by running script below. Password needs to be entered twice. First time for SSH login, second for becoming superuser.
 ```
-ansible-playbook 01_users.yml --extra-vars "@includes/default-user.json" -Kk
+ansible-playbook 01_users.yml --extra-vars "@includes/default-user.json" -Kk --extra-vars "variable_hosts=hostname"
 ```
 4. Install nvidia drivers
 ```
-ansible-playbook 02_nvidia.yml
+ansible-playbook 02_nvidia.yml --extra-vars "variable_hosts=hostname"
 ```
-5. Install iotedge dependencies
+5. Install iotedge dependencies 
 ```
-ansible-playbook 03_iotedge.yml
+ansible-playbook 03_iotedge.yml --extra-vars "variable_hosts=hostname"
 ```
 7. Harden target OS and SSH service
 ```
-ansible-playbook 04_hardening.yml
+ansible-playbook 04_hardening.yml --extra-vars "variable_hosts=hostname"
 ```
 6. Install fail2ban
 ```
-ansible-playbook 05_fail2ban.yml
+ansible-playbook 05_fail2ban.yml --extra-vars "variable_hosts=hostname"
 ```
 
 # Working with single barebone
@@ -59,6 +59,8 @@ Playbook(s) can be run for single barebone by overriding `variable_hosts` variab
 ```
 --extra-vars "variable_hosts=hostname"
 ```
+
+By omitting this variable ansible playbooks will be run for all hosts
 
 # Authors
 Justinas Bedzinkas - IBM (bedzinsk@lt.ibm.com)
