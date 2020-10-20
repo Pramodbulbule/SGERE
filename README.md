@@ -19,14 +19,17 @@ To be able to run playbooks user needs to build *em-provisioning* container loca
 
 # Adding new users
 
-New users needs be added to `includes/users.yml` and user's public key needs to be places into `includes/keyfiles` folder
+New users needs be added to:
+1. Username and its groups to `includes/users.yml` file.
+2. User's public key needs to be places into `includes/keyfiles` folder
+3. Username needs to be placed into `includes/user_config/ssh/username` file so that ansible could use it for its playbooks
 
 # Provisioning barebone
-1. Add new barebone `includes/user_confiog/ssh/config` file as **Host** block
+1. Add new barebone `includes/user_config/ssh/config` file as **Host** block
 
 2. Add new barebone into `hosts` file **[edgemachines]** section.
 
-3. Create users by running script below. Password needs to be entered twice. First time for SSH login, second for becoming superuser
+3. Create users by running script below. Password needs to be entered twice. First time for SSH login, second for becoming superuser.
 ```
 ansible-playbook 01_users.yml --extra-vars "@includes/default-user.json" -Kk
 ```
