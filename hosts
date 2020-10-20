@@ -1,10 +1,9 @@
 [edgemachines]
-192.168.8.12
-192.168.8.15
-192.168.8.18
-192.168.8.30
-192.168.8.32
-
+edge1
+edge2
+edge3
+edge4
+edge5
 
 [all:vars]
 default_user=ubuntu

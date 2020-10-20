@@ -1,5 +1,5 @@
 # Install iotedge
-- hosts: all
+- hosts: "{{ variable_hosts | default('all') }}"
   become: true
   roles:
     - ms-repo

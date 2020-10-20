@@ -1,11 +1,11 @@
 # ansible-os-hardening.yaml
-- hosts: all
+- hosts: "{{ variable_hosts | default('all') }}"
   become: true
   roles:
     - dev-sec.os-hardening
 
 # ansible-ssh-hardening.yaml 
-- hosts: all
+- hosts: "{{ variable_hosts | default('all') }}"
   become: true
   roles:
     - dev-sec.ssh-hardening

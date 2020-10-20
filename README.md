@@ -1,6 +1,9 @@
 # Introduction 
 This project defines scripts for provisioning edge machines using ansible. Ansible works by connecting to target machines via SSH, installs required software and makes necessary configurations
 
+# IMPORTANT
+This module uses active user's private/public key pair, thus the the image cannot be pushed to the cloud. To solve that ansible container should have separate private/public key pair
+
 # Playbooks
 
 | Playbook | Description |
@@ -15,16 +18,16 @@ This project defines scripts for provisioning edge machines using ansible. Ansib
 
 To be able to run playbooks user needs to build *em-provisioning* container locally and run it.
 1. ```scripts/build_container.sh```
-2. ```scripts/run_container.sh```
+2. Username needs to be placed into `includes/user_config/ssh/username` file so that ansible could use it for its playbooks
+3. ```scripts/run_container.sh```
 
 # Adding new users
 
 New users needs be added to:
 1. Username and its groups to `includes/users.yml` file.
 2. User's public key needs to be places into `includes/keyfiles` folder
-3. Username needs to be placed into `includes/user_config/ssh/username` file so that ansible could use it for its playbooks
 
-# Provisioning barebone
+# Provisioning barebones
 1. Add new barebone `includes/user_config/ssh/config` file as **Host** block
 
 2. Add new barebone into `hosts` file **[edgemachines]** section.
@@ -41,13 +44,20 @@ ansible-playbook 02_nvidia.yml
 ```
 ansible-playbook 03_iotedge.yml
 ```
-6. Install fail2ban
-```
-ansible-playbook 04_fail2ban.yml
-```
 7. Harden target OS and SSH service
 ```
-ansible-playbook 05_hardening.yml
+ansible-playbook 04_hardening.yml
+```
+6. Install fail2ban
+```
+ansible-playbook 05_fail2ban.yml
+```
+
+# Working with single barebone
+
+Playbook(s) can be run for single barebone by overriding `variable_hosts` variable by adding extra variables:
+```
+--extra-vars "variable_hosts=hostname"
 ```
 
 # Authors

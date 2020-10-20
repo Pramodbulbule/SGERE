@@ -1,4 +1,4 @@
-- hosts: all
+- hosts: "{{ variable_hosts | default('all') }}"
   become: yes
 
   roles:

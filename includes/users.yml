@@ -3,3 +3,5 @@ users:
     groups: admins
   - username: gkaplan
     groups: admins
+  - username: mkaraki
+    groups: admins    

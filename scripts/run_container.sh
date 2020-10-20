@@ -8,4 +8,6 @@ docker run --rm -it --net=host \
   -v "$base/../includes/user_config/ssh":/mnt/ssh \
   -v "$base/../includes/user_config/home/.bashrc":/root/.bashrc \
   -v "$base/../hosts":/etc/ansible/hosts \
+  -v ~/.ssh/id_rsa:/root/.ssh/id_rsa:ro \
+  -v ~/.ssh/id_rsa.pub:/root/.ssh/id_rsa.pub:ro \
   em-provisioning /bin/bash
