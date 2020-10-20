@@ -1,0 +1,8 @@
+# Install iotedge
+- hosts: all
+  become: true
+  roles:
+    - ms-repo
+    - moby
+    - iotedge
+

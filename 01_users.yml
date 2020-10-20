@@ -1,0 +1,18 @@
+- hosts: all
+  become: yes
+
+  roles:
+    - groups
+  
+  tasks:
+  - include_vars: ./includes/users.yml
+  - name: Creating users on target edge machine
+    user: 
+      name: "{{ item.username}}"
+      groups: "{{ item.groups }}"
+      shell: /bin/bash
+    with_items: "{{ users }}"
+
+  - name: Placing SSH Key to Authorized Key
+    authorized_key: user="{{item.username}}" key="{{ lookup('file', './includes/keyfiles/{{ item.username}}.pub')}}"
+    with_items: "{{ users }}"

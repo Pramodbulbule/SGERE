@@ -1,0 +1,17 @@
+- name: Make sure we have a 'admins' group
+  group:
+    name: admins
+    state: present
+
+- name: Allow 'admins' group to have passwordless sudo
+  lineinfile:
+    dest: /etc/sudoers
+    state: present
+    regexp: '^%admins'
+    line: '%admins ALL=(ALL) NOPASSWD: ALL'
+    validate: 'visudo -cf %s'
+
+- name: Make sure we have a 'developers' group
+  group:
+    name: developers
+    state: present

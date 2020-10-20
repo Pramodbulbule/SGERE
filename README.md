@@ -1,20 +1,53 @@
 # Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+This project defines scripts for provisioning edge machines using ansible. Ansible works by connecting to target machines via SSH, installs required software and makes necessary configurations
 
-# Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+# Playbooks
 
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+| Playbook | Description |
+| ------------- |-------------|
+| **01_users.yml** | Create necessary groups (admins, developers), users and pushes their public keys to target machine |
+| **02_hardening.yml** | Harden the server OS and SSH service |
+| **03_nvidia.yml** | Install nvidia drivers |
+| **04_iotedge.yml** | Install IoT Edge dependencies |
+| **05_fail2ban.yml** | Install fail2ban tool |
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
+# Initial steps
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+To be able to run playbooks user needs to build *em-provisioning* container locally and run it.
+1. ```scripts/build_container.sh```
+2. ```scripts/run_container.sh```
+
+# Adding new users
+
+New users needs be added to `includes/users.yml` and user's public key needs to be places into `includes/keyfiles` folder
+
+# Provisioning barebone
+1. Add new barebone `includes/user_confiog/ssh/config` file as **Host** block
+
+2. Add new barebone into `hosts` file **[edgemachines]** section.
+
+3. Create users by running script below. Password needs to be entered twice. First time for SSH login, second for becoming superuser
+```
+ansible-playbook 01_users.yml --extra-vars "@includes/default-user.json" -Kk
+```
+4. Install nvidia drivers
+```
+ansible-playbook 02_nvidia.yml
+```
+5. Install iotedge dependencies
+```
+ansible-playbook 03_iotedge.yml
+```
+6. Install fail2ban
+```
+ansible-playbook 04_fail2ban.yml
+```
+7. Harden target OS and SSH service
+```
+ansible-playbook 05_hardening.yml
+```
+
+# Authors
+Justinas Bedzinkas - IBM (bedzinsk@lt.ibm.com)
+
+

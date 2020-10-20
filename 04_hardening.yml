@@ -1,0 +1,15 @@
+# ansible-os-hardening.yaml
+- hosts: all
+  become: true
+  roles:
+    - dev-sec.os-hardening
+
+# ansible-ssh-hardening.yaml 
+- hosts: all
+  become: true
+  roles:
+    - dev-sec.ssh-hardening
+  vars:
+    ssh_server_password_login: true
+    sshd_authenticationmethods: 'publickey password'
+    sftp_enabled: true

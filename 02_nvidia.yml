@@ -1,0 +1,5 @@
+# ansible-role-nvidia-driver.yaml 
+- hosts: all
+  become: true
+  roles:
+    - nvidia.nvidia_driver

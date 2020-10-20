@@ -1,0 +1,19 @@
+Host edge1
+  User username-placeholder
+  Hostname 192.168.8.12
+
+Host edge2
+  User username-placeholder
+  Hostname 192.168.8.15
+
+Host edge3
+  User username-placeholder
+  Hostname 192.168.8.18
+
+Host edge4
+  User username-placeholder
+  Hostname 192.168.8.30
+
+Host edge5
+  User username-placeholder
+  Hostname 192.168.8.32

@@ -1,0 +1,6 @@
+- name: Install moby
+  apt:
+    name: ["moby-engine", "moby-cli"]
+    update_cache: yes
+  async: 180
+  become: yes
