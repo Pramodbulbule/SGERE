@@ -4,4 +4,6 @@ users:
   - username: gkaplan
     groups: admins
   - username: mkaraki
-    groups: admins    
+    groups: admins
+  - username: itelezhinsky
+    groups: admins        
