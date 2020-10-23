@@ -4,6 +4,8 @@ edge2
 edge3
 edge4
 edge5
+edge6
+test-edge
 
 [all:vars]
 default_user=ubuntu
