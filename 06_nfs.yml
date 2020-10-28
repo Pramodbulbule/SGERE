@@ -1,0 +1,6 @@
+# Mount nfs drive
+- hosts: "{{ variable_hosts | default('all') }}"
+  become: true
+  roles:
+    - mount-nfs
+
