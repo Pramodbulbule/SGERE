@@ -3,4 +3,5 @@
   become: true
   roles:
     - mount-nfs
+    - mount-data-partition
 

@@ -1,0 +1,5 @@
+- name: Give access to /mnt/data
+  file:
+    path: /mnt/data
+    mode: '0777'
+    state: 'directory'
