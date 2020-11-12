@@ -11,7 +11,8 @@ RUN apt-get update && \
   ansible-galaxy install dev-sec.os-hardening && \
   ansible-galaxy install dev-sec.ssh-hardening && \
   ansible-galaxy install nvidia.nvidia_driver && \
-  ansible-galaxy install oefenweb.fail2ban
+  ansible-galaxy install oefenweb.fail2ban && \
+  ansible-galaxy install andrewrothstein.etcd-cluster
 
 ENV ANSIBLE_HOST_KEY_CHECKING false
 ENV ANSIBLE_TRANSFORM_INVALID_GROUP_CHARS ignore

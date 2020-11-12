@@ -1,0 +1,8 @@
+# Install etcd cluster
+
+- hosts: "{{ variable_hosts | default('all') }}"
+  become: true
+  roles:
+    - role: andrewrothstein.etcd-cluster
+      etcd_cluster_name: edge-etcd-cluster
+      etcd_secure: False

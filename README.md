@@ -44,13 +44,21 @@ ansible-playbook 02_nvidia.yml --extra-vars "variable_hosts=hostname"
 ```
 ansible-playbook 03_iotedge.yml --extra-vars "variable_hosts=hostname"
 ```
-7. Harden target OS and SSH service
+6. Harden target OS and SSH service
 ```
 ansible-playbook 04_hardening.yml --extra-vars "variable_hosts=hostname"
 ```
-6. Install fail2ban
+7. Install fail2ban
 ```
 ansible-playbook 05_fail2ban.yml --extra-vars "variable_hosts=hostname"
+```
+8. Mount second partition, NFS drive and other mounts if needed
+```
+ansible-playbook 06_mounts.yml --extra-vars "variable_hosts=hostname"
+```
+9. Install etcd cluster for all edge machines
+```
+ansible-playbook 07_etcd.yml --extra-vars
 ```
 
 # Working with single barebone
