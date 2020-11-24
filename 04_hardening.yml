@@ -14,3 +14,4 @@
     sshd_authenticationmethods: 'publickey password'
     sftp_enabled: true
     ssh_allow_tcp_forwarding: 'yes'
+    ssh_x11_forwarding: true
