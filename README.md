@@ -58,7 +58,11 @@ ansible-playbook 06_mounts.yml --extra-vars "variable_hosts=hostname"
 ```
 9. Install etcd cluster for all edge machines
 ```
-ansible-playbook 07_etcd.yml --extra-vars
+ansible-playbook 07_etcd.yml
+```
+10. Add route to laser terminal and mount necessary shares
+```
+ansible-playbook 08_laser.yml --extra-vars "variable_hosts=hostname"
 ```
 
 # Working with single barebone

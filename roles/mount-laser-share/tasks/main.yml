@@ -1,0 +1,14 @@
+- name: Install cifs-utils
+  apt:
+    name: ["cifs-utils"]
+    update_cache: yes
+  async: 180
+  become: yes
+
+- name: Mount an Laser share volume
+  mount:
+    fstype: cifs
+    state: mounted
+    src: //192.168.209.100/IBM_Test_Files
+    path: /mnt/laser_share
+    opts: "user=IBM,pass=IBM1234,rw,uid=1000,dir_mode=0777,file_mode=0777"
