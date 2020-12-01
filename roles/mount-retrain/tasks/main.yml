@@ -1,0 +1,29 @@
+- name: Create fuse tmp directory if it does not exist
+  file:
+    path: /mnt/azure/retrain-fusetmp
+    state: directory
+    mode: '0600'
+
+- name: Create fuse_connections directory if it does not exist
+  file:
+    path: /etc/fuse_connections
+    state: directory
+    mode: '0755'
+
+- name: Copy config
+  copy:
+    src: includes/fuse_connections/retrain.cfg
+    dest: /etc/fuse_connections/retrain_fuse.cfg
+    group: root
+    mode: '0600'
+
+- name: Create mount directory if it does not exist
+  file:
+    path: /mnt/azure/retrain
+    state: directory
+    group: developers
+    mode: '0600'
+
+- name: Mount retrain storage from the cloud
+  shell: blobfuse /mnt/azure/retrain --tmp-path=/mnt/azure/retrain-fusetmp --config-file=/etc/fuse_connections/retrain_fuse.cfg -o attr_timeout=240 -o entry_timeout=240 -o negative_timeout=120 -o nonempty
+  become: true

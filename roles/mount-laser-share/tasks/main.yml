@@ -1,10 +1,3 @@
-- name: Install cifs-utils
-  apt:
-    name: ["cifs-utils"]
-    update_cache: yes
-  async: 180
-  become: yes
-
 - name: Mount an Laser share volume
   mount:
     fstype: cifs

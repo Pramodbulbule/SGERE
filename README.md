@@ -64,6 +64,10 @@ ansible-playbook 07_etcd.yml
 ```
 ansible-playbook 08_laser.yml --extra-vars "variable_hosts=hostname"
 ```
+11. Add azure blob storage mounts
+```
+ansible-playbook 09_azure-mounts.yml --extra-vars "variable_hosts=hostname"
+```
 
 # Working with single barebone
 

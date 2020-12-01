@@ -1,0 +1,29 @@
+- name: Create fuse tmp directory if it does not exist
+  file:
+    path: /mnt/azure/models-fusetmp
+    state: directory
+    mode: '0600'
+
+- name: Create fuse_connections directory if it does not exist
+  file:
+    path: /etc/fuse_connections
+    state: directory
+    mode: '0755'
+
+- name: Copy config
+  copy:
+    src: includes/fuse_connections/mlmodels.cfg
+    dest: /etc/fuse_connections/mlmodels_fuse.cfg
+    group: root
+    mode: '0600'
+
+- name: Create mount directory if it does not exist
+  file:
+    path: /mnt/azure/models
+    state: directory
+    group: developers
+    mode: '0600'
+
+- name: Mount models storage from the cloud
+  shell: blobfuse /mnt/azure/models --tmp-path=/mnt/azure/models-fusetmp --config-file=/etc/fuse_connections/mlmodels_fuse.cfg -o attr_timeout=240 -o entry_timeout=240 -o negative_timeout=120 -o nonempty
+  become: true

@@ -1,0 +1,10 @@
+# Install azure-fuse
+- hosts: "{{ variable_hosts | default('all') }}"
+  become: true
+  roles:
+    - ms-repo
+    - azure-fuse
+    - mount-models
+    - mount-groundtruth
+    - mount-cad-data    
+    - mount-retrain
