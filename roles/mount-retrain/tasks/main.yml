@@ -21,9 +21,8 @@
   file:
     path: /mnt/azure/retrain
     state: directory
-    group: developers
-    mode: '0600'
+    mode: '0755'
 
 - name: Mount retrain storage from the cloud
-  shell: blobfuse /mnt/azure/retrain --tmp-path=/mnt/azure/retrain-fusetmp --config-file=/etc/fuse_connections/retrain_fuse.cfg -o attr_timeout=240 -o entry_timeout=240 -o negative_timeout=120 -o nonempty
+  shell: blobfuse /mnt/azure/retrain --tmp-path=/mnt/azure/retrain-fusetmp --config-file=/etc/fuse_connections/retrain_fuse.cfg -o attr_timeout=240 -o entry_timeout=240 -o negative_timeout=120 -o nonempty -o allow_other
   become: true
