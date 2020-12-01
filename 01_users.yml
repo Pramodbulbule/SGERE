@@ -16,3 +16,7 @@
   - name: Placing SSH Key to Authorized Key
     authorized_key: user="{{item.username}}" key="{{ lookup('file', './includes/keyfiles/{{ item.username}}.pub')}}"
     with_items: "{{ users }}"
+
+  - name: Add to docker groups
+    shell: usermod -aG docker {{item.username}}
+    with_items: "{{ users }}"
