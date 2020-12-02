@@ -19,10 +19,10 @@
 
 - name: Create mount directory if it does not exist
   file:
-    path: /mnt/azure/groundtruth
+    path: /mnt/azure/ground
     state: directory
     mode: '0755'
 
 - name: Mount groundtruth storage from the cloud
-  shell: blobfuse /mnt/azure/groundtruth --tmp-path=/mnt/azure/groundtruth-fusetmp --config-file=/etc/fuse_connections/ground_truth_fuse.cfg -o attr_timeout=240 -o entry_timeout=240 -o negative_timeout=120 -o nonempty  -o allow_other
+  shell: blobfuse /mnt/azure/ground --tmp-path=/mnt/azure/ground-fusetmp --config-file=/etc/fuse_connections/ground_truth_fuse.cfg -o attr_timeout=240 -o entry_timeout=240 -o negative_timeout=120 -o nonempty  -o allow_other
   become: true
