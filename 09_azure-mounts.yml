@@ -6,5 +6,6 @@
     - azure-fuse
     - mount-models
     - mount-groundtruth
+    - mount-cameraparams
     - mount-cad-data    
     - mount-retrain

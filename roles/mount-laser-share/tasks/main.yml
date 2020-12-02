@@ -1,7 +1,20 @@
+- name: Install cifs-utils package
+  apt:
+    name: ["cifs-utils"]
+    update_cache: yes
+  async: 180
+  become: yes
+
+- name: Create mount directory if it does not exist
+  file:
+    path: /mnt/prosoft/dxf
+    state: directory
+    mode: '0755'
+
 - name: Mount an Laser share volume
   mount:
     fstype: cifs
     state: mounted
     src: //192.168.209.100/IBM_Test_Files
-    path: /mnt/laser_share
+    path: /mnt/prosoft/dxf
     opts: "user=IBM,pass=IBM1234,rw,uid=1000,dir_mode=0777,file_mode=0777"
