@@ -1,0 +1,25 @@
+- name: Add yq repository from PPA
+  apt_repository:
+    repo: ppa:rmescandon/yq
+
+- name: Install yq
+  apt:
+    name: ["yq"]
+    update_cache: yes
+  async: 180
+  become: yes
+
+- name: Setting connection string and protocol
+  shell: |
+      yq w -i --style=double /etc/iotedge/config.yaml 'provisioning.device_connection_string' "{{ connectionString }}"
+      yq w -i --style=double /etc/iotedge/config.yaml 'agent.env.UpstreamProtocol' "AmqpWs"
+  become: yes
+  notify: restart iotedge service
+
+- name: Fix permissions for /etc/iotedge/config.yaml
+  file:
+    path: /etc/iotedge/config.yaml
+    mode: '0400'
+    state: 'file'
+    owner: iotedge
+    group: iotedge

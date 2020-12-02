@@ -4,3 +4,4 @@
     update_cache: yes
   async: 180
   become: yes
+  notify: activate iotedge service

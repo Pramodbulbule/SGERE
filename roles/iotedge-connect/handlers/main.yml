@@ -1,0 +1,5 @@
+- name: restart iotedge service
+  become: yes
+  service:
+    name: iotedge
+    state: restarted

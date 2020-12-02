@@ -1,0 +1,6 @@
+- name: activate iotedge service
+  become: yes
+  systemd:
+    daemon_reload: yes
+    enabled: yes
+    name: iotedge
