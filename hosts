@@ -1,11 +1,17 @@
 [edgemachines]
-edge1
-edge2
-edge3
-edge4
-edge5
-edge6
-test-edge
+optical   
+edge1   connectionString=
+edge2   connectionString=
+edge3   connectionString=
+edge4   connectionString=
+edge5   connectionString=
 
 [all:vars]
 default_user=ubuntu
+
+[etcd]
+edge[1:6]
+
+# voting members
+[etcd-master]
+edge[2:6]
