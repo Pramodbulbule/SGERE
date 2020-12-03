@@ -1,0 +1,8 @@
+[Unit]
+Description=Triton Inference Server startup script
+
+[Service]
+ExecStart=/opt/ibm/run_triton_inference_server.sh start
+
+[Install]
+WantedBy=multi-user.target

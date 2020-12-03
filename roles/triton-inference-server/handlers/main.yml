@@ -1,0 +1,6 @@
+- name: start tis.service
+  become: yes
+  systemd:
+    state: started
+    enabled: yes
+    name: tis.service
