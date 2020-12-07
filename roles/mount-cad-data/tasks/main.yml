@@ -23,6 +23,21 @@
     state: directory
     mode: '0755'
 
-- name: Mount models storage from the cloud
-  shell: blobfuse /mnt/azure/cad --tmp-path=/mnt/azure/cad-fusetmp --config-file=/etc/fuse_connections/cad_data_fuse.cfg -o attr_timeout=240 -o entry_timeout=240 -o negative_timeout=120 -o nonempty  -o allow_other
+- name: Copy script
+  copy:
+    src: includes/blobfuse_scripts/mount_cad_data.sh
+    dest: /opt/ibm/mount_cad_data.sh
+    group: root
+    mode: '0755'
+
+- name: Mount caddata storage from the cloud
+  shell: /opt/ibm/mount_cad_data.sh
   become: true
+
+- name: Add to fstab and mount
+  mount:
+    src: /opt/ibm/mount_cad_data.sh
+    path: /mnt/azure/cad
+    opts: _netdev
+    state: mounted
+    fstype: fuse

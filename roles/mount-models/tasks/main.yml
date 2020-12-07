@@ -23,6 +23,21 @@
     state: directory
     mode: '0755'
 
+- name: Copy script
+  copy:
+    src: includes/blobfuse_scripts/mount_models.sh
+    dest: /opt/ibm/mount_models.sh
+    group: root
+    mode: '0755'
+
 - name: Mount models storage from the cloud
-  shell: blobfuse /mnt/azure/models --tmp-path=/mnt/azure/models-fusetmp --config-file=/etc/fuse_connections/mlmodels_fuse.cfg -o attr_timeout=240 -o entry_timeout=240 -o negative_timeout=120 -o nonempty -o allow_other
+  shell: /opt/ibm/mount_models.sh
   become: true
+
+- name: Add to fstab and mount
+  mount:
+    src: /opt/ibm/mount_models.sh
+    path: /mnt/azure/models
+    opts: _netdev
+    state: mounted
+    fstype: fuse

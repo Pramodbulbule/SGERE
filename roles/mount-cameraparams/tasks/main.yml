@@ -23,6 +23,21 @@
     state: directory
     mode: '0755'
 
-- name: Mount groundtruth storage from the cloud
-  shell: blobfuse /mnt/azure/ground/cameraparams --tmp-path=/mnt/azure/ground/cameraparams-fusetmp --config-file=/etc/fuse_connections/cameraparams_fuse.cfg -o attr_timeout=240 -o entry_timeout=240 -o negative_timeout=120 -o nonempty  -o allow_other
+- name: Copy script
+  copy:
+    src: includes/blobfuse_scripts/mount_cameraparams.sh
+    dest: /opt/ibm/mount_cameraparams.sh
+    group: root
+    mode: '0755'
+
+- name: Mount cameraparams storage from the cloud
+  shell: /opt/ibm/mount_cameraparams.sh
   become: true
+
+- name: Add to fstab and mount
+  mount:
+    src: /opt/ibm/mount_cameraparams.sh
+    path: /mnt/azure/ground/cameraparams
+    opts: _netdev
+    state: mounted
+    fstype: fuse
