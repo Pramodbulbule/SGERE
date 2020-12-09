@@ -12,4 +12,4 @@ users:
   - username: scheema
     groups: developers
   - username: brevanasiddappa
-    groups: developers    
+    groups: developers
