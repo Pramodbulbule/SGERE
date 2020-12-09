@@ -1,0 +1,6 @@
+- name: Install XFCE
+  apt:
+    name: ["xfce4", "xfce4-goodies"]
+    update_cache: yes
+  async: 180
+  become: yes
