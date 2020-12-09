@@ -9,7 +9,7 @@
   file:
     path: /mnt/prosoft/dxf
     state: directory
-    mode: '0755'
+    mode: '0777'
 
 - name: Mount an Laser share volume
   mount:
