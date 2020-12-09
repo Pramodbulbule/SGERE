@@ -17,6 +17,10 @@
     authorized_key: user="{{item.username}}" key="{{ lookup('file', './includes/keyfiles/{{ item.username}}.pub')}}"
     with_items: "{{ users }}"
 
-  - name: Add to docker groups
+  - name: Add users to docker group
     shell: usermod -aG docker {{item.username}}
     with_items: "{{ users }}"
+
+  - name: Add users to iotedge group
+    shell: usermod -aG iotedge {{item.username}}
+    with_items: "{{ users }}"    
