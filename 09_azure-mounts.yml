@@ -9,3 +9,4 @@
     - mount-cameraparams
     - mount-cad-data    
     - mount-retrain
+    - models-sync
