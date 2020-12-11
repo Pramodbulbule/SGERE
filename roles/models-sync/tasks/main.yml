@@ -10,7 +10,7 @@
     user: "root"
     minute: "0"
     hour: "*"
-    job: "rsync -auv /mnt/azure/models/triton/ /mnt/data/iot-work-volume/models/triton/"
+    job: "rsync -auv /mnt/azure/models/ /mnt/data/iot-work-volume/models/"
 
 - name: Sync inference server model to crontab
-  shell: "rsync -auv /mnt/azure/models/triton/ /mnt/data/iot-work-volume/models/triton/"
+  shell: "rsync -auv /mnt/azure/models/ /mnt/data/iot-work-volume/models/"
