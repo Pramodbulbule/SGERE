@@ -1,6 +1,6 @@
 - name: Create fuse tmp directory if it does not exist
   file:
-    path: /mnt/azure/ground/cameraparams-fusetmp
+    path: /mnt/azure/cameraparams-fusetmp
     state: directory
     mode: '0600'
 
@@ -19,7 +19,7 @@
 
 - name: Create mount directory if it does not exist
   file:
-    path: /mnt/azure/ground/cameraparams
+    path: /mnt/azure/cameraparams
     state: directory
     mode: '0755'
 
@@ -37,7 +37,7 @@
 - name: Add to fstab and mount
   mount:
     src: /opt/ibm/mount_cameraparams.sh
-    path: /mnt/azure/ground/cameraparams
+    path: /mnt/azure/cameraparams
     opts: _netdev
     state: mounted
     fstype: fuse
