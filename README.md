@@ -13,6 +13,13 @@ This module uses active user's private/public key pair, thus the the image canno
 | **03_nvidia.yml** | Install nvidia drivers |
 | **04_iotedge.yml** | Install IoT Edge dependencies |
 | **05_fail2ban.yml** | Install fail2ban tool |
+| **06_mounts.yml** | Mount NFS and second partition under /mnt |
+| **07_etcd.yml** | Install etcd server |
+| **08_laser.yml** | Add route to laser network, mount DXF folder |
+| **09_azure-mounts.yml** | Mount azure storage containers (models, cad, groundtruth, cameraparams, retrain) |
+| **10_inference_server.yml** | Install NVIDIA's Triton Inference server as a service |
+| **11_hosts.yml** | Update hosts files to contain edge machines hostnames |
+| **12_window_manager.yml** | Install XFCE windows manager and VNC server |
 
 # Initial steps
 
@@ -67,6 +74,25 @@ ansible-playbook 08_laser.yml --extra-vars "variable_hosts=hostname"
 11. Add azure blob storage mounts
 ```
 ansible-playbook 09_azure-mounts.yml --extra-vars "variable_hosts=hostname"
+```
+12. Install NVIDIA's Triton Inference server as a service
+```
+ansible-playbook 10_inference_server.yml --extra-vars "variable_hosts=hostname"
+```
+13. Add edge machines hostnames into /etc/hosts
+```
+ansible-playbook 11_hosts.yml --extra-vars "variable_hosts=hostname"
+```
+14. Install XFCE and TightVNC server
+```
+ansible-playbook 12_window_manager.yml --extra-vars "variable_hosts=hostname"
+```
+
+# Open Issues (IMPORTANT)
+
+All configurational changes are preserved after rebooting the system except for route to Prosoft network. After edge machine is rebooted this command needs to be run manually:
+```
+sudo ip route replace 192.168.209.0/24 via 192.168.8.80 metric 1
 ```
 
 # Working with single barebone
