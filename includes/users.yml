@@ -13,3 +13,5 @@ users:
     groups: developers
   - username: brevanasiddappa
     groups: developers
+  - username: mhoffmann
+    groups: developers
