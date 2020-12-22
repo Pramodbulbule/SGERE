@@ -11,6 +11,7 @@
       name: "{{ item.username}}"
       groups: "{{ item.groups }}"
       shell: /bin/bash
+      expires: -1
     with_items: "{{ users }}"
 
   - name: Placing SSH Key to Authorized Key
@@ -23,4 +24,8 @@
 
   - name: Add users to iotedge group
     shell: usermod -aG iotedge {{item.username}}
+    with_items: "{{ users }}"
+
+  - name: Disable password expiration
+    shell: chage -E -1 -M -1 {{item.username}}
     with_items: "{{ users }}"    
