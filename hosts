@@ -10,8 +10,8 @@ edge5   connectionString=
 default_user=ubuntu
 
 [etcd]
-edge[1:6]
+edge[1:5]
 
 # voting members
 [etcd-master]
-edge[2:6]
+edge[1:5]
