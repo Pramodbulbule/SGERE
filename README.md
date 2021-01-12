@@ -27,6 +27,7 @@ To be able to run playbooks user needs to build *em-provisioning* container loca
 1. ```scripts/build_container.sh```
 2. Username needs to be placed into `includes/user_config/ssh/username` file so that ansible could use it for its playbooks
 3. ```scripts/run_container.sh```
+4. Update ```includes/default-user.json``` to contain superuser name
 
 # Adding new users
 
