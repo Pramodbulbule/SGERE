@@ -19,3 +19,5 @@ users:
     groups: developers
   - username: jabhishek
     groups: developers
+  - username: mkolipost
+    groups: developers
