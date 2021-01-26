@@ -96,6 +96,8 @@ All configurational changes are preserved after rebooting the system except for 
 sudo ip route replace 192.168.209.0/24 via 192.168.8.80 metric 1
 ```
 
+Switch to netplan network configuration (https://galaxy.ansible.com/mrlesmithjr/netplan) by introducing a separate playbook.
+
 # Working with single barebone
 
 Playbook(s) can be run for single barebone by overriding `variable_hosts` variable by adding extra variables:
