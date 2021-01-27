@@ -10,7 +10,7 @@ users:
   - username: ksushma
     groups: admins    
   - username: bpoornima
-    groups: developers
+    groups: admins
   - username: scheema
     groups: developers
   - username: brevanasiddappa
@@ -21,3 +21,5 @@ users:
     groups: developers
   - username: mkolipost
     groups: developers
+  - username: drannacher
+    groups: developers    
