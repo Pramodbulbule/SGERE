@@ -22,4 +22,8 @@ users:
   - username: mkolipost
     groups: developers
   - username: drannacher
-    groups: developers    
+    groups: developers  
+  - username: rkranthi
+    groups: developers
+  - username: nkarthikeyan
+    groups: developers
