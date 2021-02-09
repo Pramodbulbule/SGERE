@@ -27,3 +27,7 @@ users:
     groups: developers
   - username: nkarthikeyan
     groups: developers
+  - username: bashfaq
+    groups: developers
+  - username: bdebtaru
+    groups: developers
