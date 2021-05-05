@@ -32,17 +32,17 @@
 - name: Copy script
   copy:
     src: includes/blobfuse_scripts/mount_cad_data.sh
-    dest: /opt/ibm/mount_cad_data.sh
+    dest: /opt/sgre/mount_cad_data.sh
     group: root
     mode: '0755'
 
 - name: Mount caddata storage from the cloud
-  shell: /opt/ibm/mount_cad_data.sh
+  shell: /opt/sgre/mount_cad_data.sh
   become: true
 
 - name: Add to fstab and mount
   mount:
-    src: /opt/ibm/mount_cad_data.sh
+    src: /opt/sgre/mount_cad_data.sh
     path: /mnt/azure/cad
     opts: _netdev
     state: mounted

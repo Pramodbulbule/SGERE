@@ -26,17 +26,17 @@
 - name: Copy script
   copy:
     src: includes/blobfuse_scripts/mount_cameraparams.sh
-    dest: /opt/ibm/mount_cameraparams.sh
+    dest: /opt/sgre/mount_cameraparams.sh
     group: root
     mode: '0755'
 
 - name: Mount cameraparams storage from the cloud
-  shell: /opt/ibm/mount_cameraparams.sh
+  shell: /opt/sgre/mount_cameraparams.sh
   become: true
 
 - name: Add to fstab and mount
   mount:
-    src: /opt/ibm/mount_cameraparams.sh
+    src: /opt/sgre/mount_cameraparams.sh
     path: /mnt/azure/cameraparams
     opts: _netdev
     state: mounted
