@@ -1,24 +1,14 @@
 users:
-  - username: jbedzinskas
-    groups: admins
-  - username: gkaplan
-    groups: admins
-  - username: mkaraki
-    groups: admins
-  - username: itelezhinsky
-    groups: admins
   - username: ksushma
     groups: admins    
   - username: bpoornima
     groups: admins
-  - username: scheema
-    groups: developers
   - username: brevanasiddappa
-    groups: developers
+    groups: admins
   - username: mhoffmann
     groups: developers
   - username: jabhishek
-    groups: developers
+    groups: admins
   - username: mkolipost
     groups: developers
   - username: drannacher
@@ -27,7 +17,14 @@ users:
     groups: developers
   - username: nkarthikeyan
     groups: developers
+  - username: bdmadhavi
+    groups: developers    
   - username: bashfaq
     groups: developers
   - username: bdebtaru
     groups: developers
+  - username: yhemanth
+    groups: admins    
+  - username: ckaran
+    groups: admins    
+    

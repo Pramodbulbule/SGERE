@@ -19,7 +19,11 @@ ENV ANSIBLE_HOST_KEY_CHECKING false
 ENV ANSIBLE_TRANSFORM_INVALID_GROUP_CHARS ignore
 
 # Authorize SSH Host
-RUN mkdir -p /root/.ssh && \
-    chmod 0700 /root/.ssh
+#RUN mkdir -p /root/.ssh && \
+#    chmod 0700 /root/.ssh
 
 WORKDIR /mnt/em-provisioning
+
+COPY docker-entrypoint.sh /bin/docker-entrypoint.sh
+RUN chmod +x /bin/docker-entrypoint.sh
+ENTRYPOINT ["/bin/docker-entrypoint.sh"]

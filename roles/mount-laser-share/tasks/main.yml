@@ -15,6 +15,6 @@
   mount:
     fstype: cifs
     state: mounted
-    src: //192.168.209.100/IBM_Test_Files
+    src: //192.168.209.100/B97-01_OpticalBlade
     path: /mnt/prosoft/dxf
-    opts: "user=IBM,pass=IBM1234,rw,uid=1000,dir_mode=0777,file_mode=0777"
+    opts: "user=ob,pass=SGRE-1234,rw,uid=1000,dir_mode=0777,file_mode=0777"

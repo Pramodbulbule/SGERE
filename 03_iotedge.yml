@@ -1,7 +1,7 @@
 # Install iotedge
 - hosts: "{{ variable_hosts | default('all') }}"
   become: true
-  roles:
+  roles:  
     - ms-repo
     - moby
     - iotedge

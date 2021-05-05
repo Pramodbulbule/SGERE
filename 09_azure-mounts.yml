@@ -5,8 +5,8 @@
     - ms-repo
     - azure-fuse
     - mount-models
-    - mount-groundtruth
     - mount-cameraparams
-    - mount-cad-data    
+    - mount-cad-data  
+    - mount-devstorageoptical
     - mount-retrain
     - models-sync

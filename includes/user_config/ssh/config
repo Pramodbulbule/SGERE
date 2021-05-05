@@ -1,6 +1,10 @@
 Host optical
   User username-placeholder
   Hostname 192.168.8.100
+  
+Host dkalldev1
+  User username-placeholder
+  Hostname 192.168.8.101
 
 Host edge1
   User username-placeholder
@@ -17,7 +21,3 @@ Host edge3
 Host edge4
   User username-placeholder
   Hostname 192.168.8.30
-
-Host edge5
-  User username-placeholder
-  Hostname 192.168.8.32

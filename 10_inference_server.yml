@@ -1,4 +1,5 @@
 - hosts: "{{ variable_hosts | default('all') }}"
   become: true
   roles:
+    - install-tightvncserver
     - triton-inference-server

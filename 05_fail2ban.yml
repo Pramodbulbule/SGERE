@@ -1,6 +1,7 @@
 - hosts: "{{ variable_hosts | default('all') }}"
+  become: true
   roles:
-    - fail2ban
+    - oefenweb.fail2ban
   vars:
     fail2ban_services:
       - name: sshd
