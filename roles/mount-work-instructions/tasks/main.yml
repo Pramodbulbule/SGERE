@@ -1,0 +1,43 @@
+- name: Create fuse tmp directory if it does not exist
+  file:
+    path: /mnt/azure/work-instructions-fusetmp
+    state: directory
+    mode: '0600'
+
+- name: Create fuse_connections directory if it does not exist
+  file:
+    path: /etc/fuse_connections
+    state: directory
+    mode: '0755'
+
+- name: Copy config
+  copy:
+    src: includes/fuse_connections/workinstructions.cfg
+    dest: /etc/fuse_connections/work_instructions_fuse.cfg
+    group: root
+    mode: '0600'
+
+- name: Create mount directory if it does not exist
+  file:
+    path: /mnt/azure/work-instructions
+    state: directory
+    mode: '0755'
+
+- name: Copy script
+  copy:
+    src: includes/blobfuse_scripts/mount_work_instructions.sh
+    dest: /opt/ibm/mount_work_instructions.sh
+    group: root
+    mode: '0755'
+
+- name: Mount work-instructions storage from the cloud
+  shell: /opt/ibm/mount_work_instructions.sh
+  become: true
+
+- name: Add to fstab and mount
+  mount:
+    src: /opt/ibm/mount_work_instructions.sh
+    path: /mnt/azure/work-instructions
+    opts: _netdev
+    state: mounted
+    fstype: fuse
