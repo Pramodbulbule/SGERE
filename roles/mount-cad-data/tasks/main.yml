@@ -1,6 +1,6 @@
 - name: Create fuse tmp directory if it does not exist
   file:
-    path: /mnt/azure/cad-fusetmp
+    path: /mnt/azure/fusetmp/cad
     state: directory
     mode: '0600'
 
@@ -32,17 +32,17 @@
 - name: Copy script
   copy:
     src: includes/blobfuse_scripts/mount_cad_data.sh
-    dest: /opt/sgre/mount_cad_data.sh
+    dest: /opt/ibm/mount_cad_data.sh
     group: root
     mode: '0755'
 
 - name: Mount caddata storage from the cloud
-  shell: /opt/sgre/mount_cad_data.sh
+  shell: /opt/ibm/mount_cad_data.sh
   become: true
 
 - name: Add to fstab and mount
   mount:
-    src: /opt/sgre/mount_cad_data.sh
+    src: /opt/ibm/mount_cad_data.sh
     path: /mnt/azure/cad
     opts: _netdev
     state: mounted
