@@ -1,6 +1,6 @@
 - name: Create fuse tmp directory if it does not exist
   file:
-    path: /mnt/azure/work-instructions-fusetmp
+    path: /mnt/azure/fusetmp/work-instructions
     state: directory
     mode: '0600'
 

@@ -5,16 +5,16 @@
     group: root
     mode: '0755'
 
-- name: Create /opt/sgre/
+- name: Create /opt/ibm/
   file:
-    path: /opt/sgre/
+    path: /opt/ibm/
     state: directory
     mode: '0755'
 
 - name: Copy service launcher
   copy:
     src: includes/run_triton_inference_server.sh
-    dest: /opt/sgre/run_triton_inference_server.sh
+    dest: /opt/ibm/run_triton_inference_server.sh
     group: root
     mode: '0755'
   notify: start tis.service 
