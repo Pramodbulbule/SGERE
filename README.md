@@ -17,9 +17,8 @@ This module uses active user's private/public key pair, thus the the image canno
 | **07_etcd.yml** | Install etcd server |
 | **08_laser.yml** | Mount DXF folder |
 | **09_azure-mounts.yml** | Mount azure storage containers (models, cad, groundtruth, cameraparams, retrain) |
-| **10_inference_server.yml** | Install NVIDIA's Triton Inference server as a service |
-| **11_hosts.yml** | Update hosts files to contain edge machines hostnames |
-| **12_window_manager.yml** | Install XFCE windows manager and VNC server |
+| **10_hosts.yml** | Update hosts files to contain edge machines hostnames |
+| **11_window_manager.yml** | Install XFCE windows manager and VNC server |
 
 # Initial steps
 
@@ -76,17 +75,13 @@ ansible-playbook 08_laser.yml --extra-vars "variable_hosts=hostname"
 ```
 ansible-playbook 09_azure-mounts.yml --extra-vars "variable_hosts=hostname"
 ```
-12. Install NVIDIA's Triton Inference server as a service
+12. Add edge machines hostnames into /etc/hosts
 ```
-ansible-playbook 10_inference_server.yml --extra-vars "variable_hosts=hostname"
+ansible-playbook 10_hosts.yml --extra-vars "variable_hosts=hostname"
 ```
-13. Add edge machines hostnames into /etc/hosts
+13. Install XFCE and TightVNC server
 ```
-ansible-playbook 11_hosts.yml --extra-vars "variable_hosts=hostname"
-```
-14. Install XFCE and TightVNC server
-```
-ansible-playbook 12_window_manager.yml --extra-vars "variable_hosts=hostname"
+ansible-playbook 11_window_manager.yml --extra-vars "variable_hosts=hostname"
 ```
 
 # Working with single barebone
