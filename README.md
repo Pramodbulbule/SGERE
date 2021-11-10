@@ -15,7 +15,7 @@ This module uses active user's private/public key pair, thus the the image canno
 | **05_fail2ban.yml** | Install fail2ban tool |
 | **06_mounts.yml** | Mount NFS and second partition under /mnt |
 | **07_etcd.yml** | Install etcd server |
-| **08_laser.yml** | Add route to laser network, mount DXF folder |
+| **08_laser.yml** | Mount DXF folder |
 | **09_azure-mounts.yml** | Mount azure storage containers (models, cad, groundtruth, cameraparams, retrain) |
 | **10_inference_server.yml** | Install NVIDIA's Triton Inference server as a service |
 | **11_hosts.yml** | Update hosts files to contain edge machines hostnames |
@@ -88,15 +88,6 @@ ansible-playbook 11_hosts.yml --extra-vars "variable_hosts=hostname"
 ```
 ansible-playbook 12_window_manager.yml --extra-vars "variable_hosts=hostname"
 ```
-
-# Open Issues (IMPORTANT)
-
-All configurational changes are preserved after rebooting the system except for route to Prosoft network. After edge machine is rebooted this command needs to be run manually:
-```
-sudo ip route replace 192.168.209.0/24 via 192.168.8.80 metric 1
-```
-
-Switch to netplan network configuration (https://galaxy.ansible.com/mrlesmithjr/netplan) by introducing a separate playbook.
 
 # Working with single barebone
 

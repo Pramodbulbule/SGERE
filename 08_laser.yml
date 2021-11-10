@@ -1,6 +1,21 @@
-# Mount nfs drive
 - hosts: "{{ variable_hosts | default('all') }}"
   become: true
-  roles:
-    - add-laser-route  
-    - mount-laser-share
+  tasks:
+    - name: Create mounts
+      include_role:
+        name: mount-laser-share
+      vars:
+        mount_info: "{{ item }}"
+      with_items:
+        - name: hall10-mould2
+          mount_dir: /mnt/prosoft
+          ip: 192.168.8.5
+          username: ob
+          password: SGRE-1234
+          target_dir: B97-01_OpticalBlade
+        - name: hall10-mould4
+          mount_dir: /mnt/prosoft
+          ip: 192.168.8.7
+          username: ob
+          password: SGRE-1234
+          target_dir: B97-01_OpticalBlade

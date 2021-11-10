@@ -5,16 +5,16 @@
   async: 180
   become: yes
 
-- name: Create mount directory if it does not exist
+- name: Create mount directory {{ mount_info.mount_dir }}/{{ mount_info.name }}-dxf if it does not exist
   file:
-    path: /mnt/prosoft/dxf
+    path: "{{ mount_info.mount_dir }}/{{ mount_info.name }}-dxf"
     state: directory
     mode: '0777'
 
-- name: Mount an Laser share volume
+- name: Mount an Laser share volume on {{ mount_info.mount_dir }}/{{ mount_info.name }}-dxf
   mount:
     fstype: cifs
     state: mounted
-    src: //192.168.209.100/B97-01_OpticalBlade
-    path: /mnt/prosoft/dxf
-    opts: "user=ob,pass=SGRE-1234,rw,uid=1000,dir_mode=0777,file_mode=0777"
+    src: "//{{ mount_info.ip }}/{{ mount_info.target_dir }}"
+    path: "{{ mount_info.mount_dir }}/{{ mount_info.name }}-dxf"
+    opts: "user={{ mount_info.username }},pass={{ mount_info.password }},rw,uid=1000,dir_mode=0777,file_mode=0777"
