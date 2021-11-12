@@ -1,0 +1,13 @@
+[edgemachines]
+dkaalprod1 ansible_host=192.168.8.201
+dkaalprod2 ansible_host=192.168.8.202
+dkaalprod3 ansible_host=192.168.8.203
+dkaalprod4 ansible_host=192.168.8.204
+dkaalprod5 ansible_host=192.168.8.205
+dkaalprod6 ansible_host=192.168.8.206
+dkaalprod7 ansible_host=192.168.8.207
+dkaalprod8 ansible_host=192.168.8.208
+
+
+[all:vars]
+default_user=ubuntu
