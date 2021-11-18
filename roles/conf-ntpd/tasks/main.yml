@@ -1,0 +1,20 @@
+- name: install tzdata
+  apt:
+    name: ["tzdata", "ntp"]
+    update_cache: yes
+    state: present
+  async: 180
+  become: yes
+
+- name: install config file
+  copy:
+    src: includes/ntp.conf
+    dest: /etc/ntp.conf
+    group: root
+    mode: '0644'
+  
+- name: restart ntp service
+  become: yes
+  service: 
+    name: ntp
+    state: restarted  

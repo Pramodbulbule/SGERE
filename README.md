@@ -19,6 +19,8 @@ This module uses active user's private/public key pair, thus the the image canno
 | **09_azure-mounts.yml** | Mount azure storage containers (models, cad, groundtruth, cameraparams, retrain) |
 | **10_hosts.yml** | Update hosts files to contain edge machines hostnames |
 | **11_window_manager.yml** | Install XFCE windows manager and VNC server |
+| **12_pip3.yml** | Install pip |
+| **13_ntpd.yml** | Install and configure ntpd server |
 
 # Initial steps
 
@@ -83,6 +85,14 @@ ansible-playbook 10_hosts.yml --extra-vars "variable_hosts=hostname"
 ```
 ansible-playbook 11_window_manager.yml --extra-vars "variable_hosts=hostname"
 ```
+14. Install pip
+```
+ansible-playbook 12_pip3.yml --extra-vars "variable_hosts=hostname"
+```
+13. Install and configure ntpd server
+```
+ansible-playbook 13_ntpd.yml --extra-vars "variable_hosts=hostname"
+```
 
 # Working with single barebone
 
@@ -95,5 +105,6 @@ By omitting this variable ansible playbooks will be run for all hosts
 
 # Authors
 Justinas Bedzinkas - IBM (bedzinsk@lt.ibm.com)
+Sushma Kasim Prakash - SGRE (sushma.kasim@siemensgamesa.com)
 
 

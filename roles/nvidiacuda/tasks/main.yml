@@ -1,0 +1,47 @@
+- name: Get Nvidia associated APT keys
+  get_url:
+    url: https://nvidia.github.io/nvidia-docker/gpgkey
+    dest: /tmp/nvidiakeys.pub
+- name: Import the Nvidia-keys
+  shell: apt-key add /tmp/nvidiakeys.pub
+- name: Download Nvidia-Docker repository
+  get_url:
+    url: https://nvidia.github.io/nvidia-docker/ubuntu20.04/nvidia-docker.list
+    dest: /etc/apt/sources.list.d/nvidia-docker.list
+- name: Download CUDA repository
+  get_url:
+    url: https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/cuda-ubuntu2004.pin
+    dest: /etc/apt/preferences.d/cuda-repository-pin-600
+- name: Get associated APT keys
+  get_url:
+    url: https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/7fa2af80.pub
+    dest: /tmp/cudakeys.pub
+- name: Import the cudakeys
+  shell: apt-key add /tmp/cudakeys.pub
+- name: Add CUDA repository
+  shell: add-apt-repository "deb http://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/ /"
+- name: install driver updates for Nvidia
+  apt:
+    name: 
+    - ubuntu-drivers-common
+- name: install ubuntu-drivers and Nvidia
+  apt:
+    name: 
+    - nvidia-driver-495
+    state: present
+- name: install cuda
+  apt:
+    name:
+    - cuda
+    state: present
+- name: install ubuntu-toolkit
+  apt:
+    name: 
+    - nvidia-container-toolkit
+    - nvidia-container-runtime
+    state: present
+- name: install Docker
+  apt:
+    name: 
+    - docker.io
+    state: present

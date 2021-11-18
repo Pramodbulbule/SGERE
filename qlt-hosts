@@ -1,0 +1,6 @@
+[edgemachines]
+dkalledgetest1 ansible_host=192.168.8.90
+dkalledgetest2 ansible_host=192.168.8.91
+
+[all:vars]
+default_user=sgre

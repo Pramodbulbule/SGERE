@@ -10,4 +10,4 @@ dkaalprod8 ansible_host=192.168.8.208
 
 
 [all:vars]
-default_user=ubuntu
+default_user=sgre
