@@ -5,7 +5,6 @@
     - ms-repo
     - azure-fuse
     - mount-models
-    - mount-cameraparams
     - mount-cad-data  
     - mount-devstorageoptical
     - mount-retrain
