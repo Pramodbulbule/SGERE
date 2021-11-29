@@ -8,15 +8,15 @@
     - role: mount-storage
       mount_name: models
       fuse_cfg_name: mlmodels_fuse.cfg
-      mount_folder: /tmp
+      mount_folder: /mnt/azure
     - role: mount-storage
       mount_name: cad
       fuse_cfg_name: cad_data_fuse.cfg
-      mount_folder: /tmp
+      mount_folder: /mnt/azure
     - role: mount-storage
       mount_name: retrain
       fuse_cfg_name: retrain_fuse.cfg    
-      mount_folder: /tmp
+      mount_folder: /mnt/azure
     - role: mount-storage
       mount_name: work-instructions
       fuse_cfg_name: workinstructions_fuse.cfg
@@ -28,4 +28,4 @@
     - role: mount-storage
       mount_name: camera-params
       fuse_cfg_name: camera_params_fuse.cfg
-      mount_folder: /mnt/azure      
+      mount_folder: /mnt/azure
