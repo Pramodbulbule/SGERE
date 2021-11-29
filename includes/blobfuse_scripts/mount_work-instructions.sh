@@ -1,2 +1,2 @@
 #!/bin/bash
-blobfuse /mnt/azure/work-instructions --tmp-path=/mnt/azure/fusetmp/work-instructions --config-file=/etc/fuse_connections/work_instructions_fuse.cfg -o attr_timeout=240 -o entry_timeout=240 -o negative_timeout=120 -o nonempty -o allow_other
+blobfuse /mnt/azure/work-instructions --tmp-path=/mnt/azure/fusetmp/work-instructions --config-file=/etc/fuse_connections/workinstructions_fuse.cfg -o attr_timeout=240 -o entry_timeout=240 -o negative_timeout=120 -o nonempty -o allow_other

@@ -20,8 +20,12 @@
     - role: mount-storage
       mount_name: work-instructions
       fuse_cfg_name: workinstructions_fuse.cfg
-      mount_folder: /tmp
+      mount_folder: /mnt/azure
     - role: mount-storage
       mount_name: calibration
       fuse_cfg_name: calibration_fuse.cfg
-      mount_folder: /tmp
+      mount_folder: /mnt/azure
+    - role: mount-storage
+      mount_name: camera-params
+      fuse_cfg_name: camera_params_fuse.cfg
+      mount_folder: /mnt/azure      
