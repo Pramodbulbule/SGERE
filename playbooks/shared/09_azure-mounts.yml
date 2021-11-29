@@ -4,7 +4,6 @@
   roles:
     - ms-repo
     - azure-fuse
-    - mount-devstorageoptical
     - role: mount-storage
       mount_name: models
       fuse_cfg_name: mlmodels_fuse.cfg
