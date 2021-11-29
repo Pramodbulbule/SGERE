@@ -43,55 +43,55 @@ New users needs be added to:
 
 3. Create users by running script below. Password needs to be entered twice. First time for SSH login, second for becoming superuser.
 ```
-ansible-playbook 01_users.yml --extra-vars "@includes/default-user.json" -Kk --extra-vars "variable_hosts=hostname"
+ansible-playbook -i inventory/<env>/<location>/<inventory-file> 01_users.yml --extra-vars "@includes/default-user.json" -Kk --extra-vars "variable_hosts=hostname"
 ```
 4. Install nvidia drivers
 ```
-ansible-playbook 02_nvidia.yml --extra-vars "variable_hosts=hostname"
+ansible-playbook -i inventory/<env>/<location>/<inventory-file> 02_nvidia.yml --extra-vars "variable_hosts=hostname"
 ```
 5. Install iotedge dependencies 
 ```
-ansible-playbook 03_iotedge.yml --extra-vars "variable_hosts=hostname"
+ansible-playbook -i inventory/<env>/<location>/<inventory-file> 03_iotedge.yml --extra-vars "variable_hosts=hostname"
 ```
 6. Harden target OS and SSH service
 ```
-ansible-playbook 04_hardening.yml --extra-vars "variable_hosts=hostname"
+ansible-playbook -i inventory/<env>/<location>/<inventory-file> 04_hardening.yml --extra-vars "variable_hosts=hostname"
 ```
 7. Install fail2ban
 ```
-ansible-playbook 05_fail2ban.yml --extra-vars "variable_hosts=hostname"
+ansible-playbook -i inventory/<env>/<location>/<inventory-file> 05_fail2ban.yml --extra-vars "variable_hosts=hostname"
 ```
 8. Mount second partition, NFS drive and other mounts if needed
 ```
-ansible-playbook 06_mounts.yml --extra-vars "variable_hosts=hostname"
+ansible-playbook -i inventory/<env>/<location>/<inventory-file> 06_mounts.yml --extra-vars "variable_hosts=hostname"
 ```
 9. Install etcd cluster for all edge machines
 ```
-ansible-playbook 07_etcd.yml
+ansible-playbook -i inventory/<env>/<location>/<inventory-file> -i inventory/<env>/<location>/<etcd-inventory-file> 07_etcd.yml
 ```
 10. Add route to laser terminal and mount necessary shares
 ```
-ansible-playbook 08_laser.yml --extra-vars "variable_hosts=hostname"
+ansible-playbook -i inventory/<env>/<location>/<inventory-file> 08_laser.yml --extra-vars "variable_hosts=hostname"
 ```
 11. Add azure blob storage mounts
 ```
-ansible-playbook 09_azure-mounts.yml --extra-vars "variable_hosts=hostname"
+ansible-playbook -i inventory/<env>/<location>/<inventory-file> 09_azure-mounts.yml --extra-vars "variable_hosts=hostname"
 ```
 12. Add edge machines hostnames into /etc/hosts
 ```
-ansible-playbook 10_hosts.yml --extra-vars "variable_hosts=hostname"
+ansible-playbook -i inventory/<env>/<location>/<inventory-file> 10_hosts.yml --extra-vars "variable_hosts=hostname"
 ```
 13. Install XFCE and TightVNC server
 ```
-ansible-playbook 11_window_manager.yml --extra-vars "variable_hosts=hostname"
+ansible-playbook -i inventory/<env>/<location>/<inventory-file> 11_window_manager.yml --extra-vars "variable_hosts=hostname"
 ```
 14. Install pip
 ```
-ansible-playbook 12_pip3.yml --extra-vars "variable_hosts=hostname"
+ansible-playbook -i inventory/<env>/<location>/<inventory-file> 12_pip3.yml --extra-vars "variable_hosts=hostname"
 ```
 13. Install and configure ntpd server
 ```
-ansible-playbook 13_ntpd.yml --extra-vars "variable_hosts=hostname"
+ansible-playbook -i inventory/<env>/<location>/<inventory-file> 13_ntpd.yml --extra-vars "variable_hosts=hostname"
 ```
 
 # Working with single barebone

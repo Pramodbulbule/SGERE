@@ -1,0 +1,6 @@
+[etcd]
+dkalledgetest[1:2]
+
+# voting members
+[etcd-master]
+dkalledgetest1
