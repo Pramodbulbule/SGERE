@@ -1,6 +1,6 @@
 - name: Create fuse tmp directory if it does not exist
   file:
-    path: /mnt/azure/fusetmp/calibration
+    path: '{{ mount_folder }}/fusetmp/{{ mount_name }}'
     state: directory
     mode: '0600'
 
@@ -12,32 +12,32 @@
 
 - name: Copy config
   copy:
-    src: includes/fuse_connections/calibration.cfg
-    dest: /etc/fuse_connections/calibration_fuse.cfg
+    src: includes/fuse_connections/{{ fuse_cfg_name }}
+    dest: /etc/fuse_connections/{{ fuse_cfg_name }}
     group: root
     mode: '0600'
 
 - name: Create mount directory if it does not exist
   file:
-    path: /mnt/azure/calibration
+    path: '{{ mount_folder }}/{{ mount_name }}'
     state: directory
     mode: '0755'
 
 - name: Copy script
   copy:
-    src: includes/blobfuse_scripts/mount_calibration.sh
-    dest: /opt/ibm/mount_calibration.sh
+    src: includes/blobfuse_scripts/mount_{{ mount_name }}.sh
+    dest: /opt/sgre/mount_{{ mount_name }}.sh
     group: root
     mode: '0755'
 
-- name: Mount calibration storage from the cloud
-  shell: /opt/ibm/mount_calibration.sh
+- name: Mount {{ mount_name }} storage from the cloud
+  shell: /opt/sgre/mount_{{ mount_name }}.sh
   become: true
 
 - name: Add to fstab and mount
   mount:
-    src: /opt/ibm/mount_calibration.sh
-    path: /mnt/azure/calibration
+    src: /opt/sgre/mount_{{ mount_name }}.sh
+    path: '{{ mount_folder }}/{{ mount_name }}'
     opts: _netdev
     state: mounted
     fstype: fuse
