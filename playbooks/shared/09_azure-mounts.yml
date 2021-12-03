@@ -1,4 +1,3 @@
-# Install azure-fuse
 - hosts: "{{ variable_hosts | default('all') }}"
   become: true
   roles:

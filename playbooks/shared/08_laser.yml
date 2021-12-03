@@ -19,3 +19,9 @@
           username: ob
           password: SGRE-1234
           target_dir: B97-01_OpticalBlade
+        - name: hall10-b9702u1
+          mount_dir: /mnt/prosoft
+          ip: 192.168.8.4
+          username: ob
+          password: SGRE-1234
+          target_dir: B97-01_OpticalBlade

@@ -12,7 +12,7 @@
 
 - name: Copy config
   copy:
-    src: includes/fuse_connections/{{ fuse_cfg_name }}
+    src: ../../includes/fuse_connections/{{ fuse_cfg_name }}
     dest: /etc/fuse_connections/{{ fuse_cfg_name }}
     group: root
     mode: '0600'
@@ -25,7 +25,7 @@
 
 - name: Copy script
   copy:
-    src: includes/blobfuse_scripts/mount_{{ mount_name }}.sh
+    src: ../../includes/blobfuse_scripts/mount_{{ mount_name }}.sh
     dest: /opt/sgre/mount_{{ mount_name }}.sh
     group: root
     mode: '0755'
