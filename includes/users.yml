@@ -1,7 +1,5 @@
 users:
   - username: ksushma
-    groups: admins    
-  - username: bpoornima
     groups: admins
   - username: brevanasiddappa
     groups: admins
@@ -23,8 +21,6 @@ users:
     groups: developers
   - username: bdebtaru
     groups: developers
-  - username: yhemanth
-    groups: admins    
   - username: ckaran
     groups: admins    
     

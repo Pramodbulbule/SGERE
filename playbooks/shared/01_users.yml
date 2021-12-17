@@ -5,7 +5,7 @@
     - groups
   
   tasks:
-  - include_vars: ./includes/users.yml
+  - include_vars: ../../includes/users.yml
   - name: Creating users on target edge machine
     user: 
       name: "{{ item.username}}"
@@ -15,7 +15,7 @@
     with_items: "{{ users }}"
 
   - name: Placing SSH Key to Authorized Key
-    authorized_key: user="{{item.username}}" key="{{ lookup('file', './includes/keyfiles/{{ item.username}}.pub')}}"
+    authorized_key: user="{{item.username}}" key="{{ lookup('file', '../../includes/keyfiles/{{ item.username}}.pub')}}"
     with_items: "{{ users }}"
 
   - name: Add users to docker group

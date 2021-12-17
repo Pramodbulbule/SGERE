@@ -1,9 +1,9 @@
 [edgemachines]
-optical ansible_host=192.168.8.100
-edge1   ansible_host=192.168.8.12 connectionString=
-edge2   ansible_host=192.168.8.15 connectionString=
-edge3   ansible_host=192.168.8.18 connectionString=
-edge4   ansible_host=192.168.8.30 connectionString=
+dkalldev1  ansible_host=192.168.8.101  connectionString=
+dkaaldev2  ansible_host=192.168.8.225 connectionString=
+edge2      ansible_host=192.168.8.15 connectionString=
+edge4      ansible_host=192.168.8.30 connectionString=
+
 
 [all:vars]
 default_user=ubuntu
