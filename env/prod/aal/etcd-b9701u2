@@ -1,6 +1,12 @@
 [etcd]
-dkaalprod[1:4]
+dkaalprod1
+dkaalprod2
+dkaalprod3
+dkaalprod4
 
 # voting members
-[etcd-master]
-dkaalprod[1:3]
+[etcd_master]
+dkaalprod1
+dkaalprod2
+dkaalprod3
+dkaalprod4

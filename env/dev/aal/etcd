@@ -1,6 +1,8 @@
 [etcd]
-edge[1:4]
+edge2
+edge4
 
 # voting members
-[etcd-master]
-edge[1:3]
+[etcd_master]
+edge2
+edge4

@@ -7,10 +7,3 @@ edge4      ansible_host=192.168.8.30 connectionString=
 
 [all:vars]
 default_user=ubuntu
-
-[etcd]
-edge[1:4]
-
-# voting members
-[etcd-master]
-edge[1:3]

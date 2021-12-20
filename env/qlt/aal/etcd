@@ -2,5 +2,5 @@
 dkalledgetest[1:2]
 
 # voting members
-[etcd-master]
-dkalledgetest1
+[etcd_master]
+dkalledgetest[1:2]
