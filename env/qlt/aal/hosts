@@ -4,3 +4,6 @@ dkalledgetest2 ansible_host=192.168.8.91
 
 [all:vars]
 default_user=sgre
+
+[all:vars]
+ansible_python_interpreter=/usr/bin/python3

@@ -1,0 +1,16 @@
+- name: Install python3-docker
+  apt:
+    name: ["python3-docker", "python3-requests", "python3-distutils"]
+    update_cache: yes
+  async: 180
+  become: yes
+
+- name: Run etcdkeeper
+  docker_container:
+    name: etcdkeeper
+    image: evildecay/etcdkeeper
+    env:
+      PORT: "8081"
+    restart_policy: always
+    network_mode: host
+    container_default_behavior: no_defaults
