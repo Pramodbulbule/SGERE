@@ -7,3 +7,5 @@ default_user=sgre
 
 [all:vars]
 ansible_python_interpreter=/usr/bin/python3
+stage=test
+location=aal

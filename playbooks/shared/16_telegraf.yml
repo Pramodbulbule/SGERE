@@ -1,0 +1,129 @@
+- hosts: "{{ variable_hosts | default('all') }}"
+  become: true
+  roles:
+    - telegraf-preinstall
+    - dj-wasabi.telegraf
+    - telegraf-postinstall
+  vars_prompt:
+    - name: instrumentation_key
+      prompt: Enter the Application Insights instrumentation key    
+  vars:
+    telegraf_agent_package_state: latest
+    telegraf_agent_package_method: repo
+    telegraf_agent_package_version: 1.21.2
+    telegraf_agent_interval: 300
+    telegraf_agent_debug: False
+    telegraf_agent_quiet: False
+    telegraf_agent_hostname: "{{ ansible_nodename }}"
+    telegraf_agent_output:
+      - type: application_insights
+        config:
+          - instrumentation_key = "{{ instrumentation_key }}"
+    telegraf_global_tags:
+      - tag_name: stage
+        tag_value: "{{ stage }}"
+      - tag_name: location
+        tag_value: "{{ location }}"      
+      - tag_name: host
+        tag_value: "{{ ansible_nodename }}"
+    telegraf_plugins_default:
+      - plugin: cpu
+        config:
+          - percpu = false
+          - totalcpu = true
+          - collect_cpu_time = false
+          - fieldpass = ["usage_user","usage_system","usage_idle","usage_active","usage_idle"]
+          - fielddrop = ["usage_steal"]
+      - plugin: disk
+        config:
+          - ignore_fs = ["tmpfs", "devtmpfs", "devfs", "iso9660", "overlay", "aufs", "squashfs"]
+          - fieldpass = ["free", "disk_used", "used_percent"]
+      - plugin: diskio
+        config:
+        - devices = ["sda"]
+        - fieldpass = ["read_time", "write_time", "iops_in_progress"]
+      - plugin: mem
+        config:
+          - fieldpass = ["available","available_percent", "used_percent"]
+      - plugin: smart
+        config:
+          - attributes = true
+          - devices = [ "/dev/sda" ]
+      - plugin: system
+        config:
+          - fieldpass = ["uptime","n_cpus"]
+      - plugin: sensors
+        config:
+          - fielddrop = ["temp_crit_alarm", "temp_crit"]
+      - plugin: nvidia_smi
+        config:
+        - fieldpass = ["fan_speed", "power_draw", "temperature_gpu", "utilization_gpu", "utilization_memory", "driver_version", "cuda_version"]
+      - plugin: docker
+        config:
+          - perdevice = false
+          - perdevice_include = ["blkio", "network"]
+          - total = true
+          - total_include = ["cpu", "blkio", "network"]
+          - fieldpass = ["n_images", "n_containers_running", "n_containers_stopped", "exitcode", "usage", "usage_system", "usage_total", "usage_percent", "health_status", "docker_container_cpu_usage_percent"]
+          - fielddrop = ["usage_system", "usage_total"]
+      - plugin: exec
+        config:
+        - commands = [ "/opt/sgre/telegraf/check-path.sh /mnt/azure/cad/{{ location }}" ]
+        - timeout = "5s"
+        - name_override = "cad"
+        - name_suffix = ""
+        - data_format = "json"
+        - tag_keys = [
+            "name",
+            "path"
+          ]
+      - plugin: exec
+        config:
+        - commands = [ "/opt/sgre/telegraf/check-path.sh /mnt/azure/camera-params/camera-settings/{{ location }}" ]
+        - timeout = "5s"
+        - name_override = "camera_settings"
+        - name_suffix = ""
+        - data_format = "json"
+        - tag_keys = [
+            "name",
+            "path"
+          ]
+      - plugin: exec
+        config:
+        - commands = [ "/opt/sgre/telegraf/check-path.sh /mnt/azure/models/triton" ]
+        - timeout = "5s"
+        - name_override = "models_triton"
+        - name_suffix = ""
+        - data_format = "json"
+        - tag_keys = [
+            "name",
+            "path"
+          ]
+      - plugin: exec
+        config:
+        - commands = [ "/opt/sgre/telegraf/check-path.sh /mnt/azure/data-provisioning/{{ location }}" ]
+        - timeout = "5s"
+        - name_override = "data_provisioning"
+        - name_suffix = ""
+        - data_format = "json"
+        - tag_keys = [
+            "name",
+            "path"
+          ]
+      - plugin: exec
+        config:
+        - commands = [ "/opt/sgre/telegraf/check-path.sh /mnt/azure/calibration/{{ location }}" ]
+        - timeout = "5s"
+        - name_override = "calibration"
+        - name_suffix = ""
+        - data_format = "json"
+        - tag_keys = [
+            "name",
+            "path"
+          ]
+      - plugin: procstat
+        config:
+        - systemd_unit = "etcd.service"
+      - plugin: procstat
+        config:
+        - systemd_unit = "iotedge.service"

@@ -3,17 +3,14 @@ FROM ubuntu:18.04
 # Ensure apt-get won't prompt for selecting options
 ENV DEBIAN_FRONTEND=noninteractive
 
+COPY requirements.yml /tmp/.
+
 RUN apt-get update && \
   apt-get install -y --no-install-recommends software-properties-common && \
   apt-add-repository --yes --update ppa:ansible/ansible && \
-  apt-get install -y --no-install-recommends \
-    ansible ssh vim nano iputils-ping && \
-  ansible-galaxy install dev-sec.os-hardening && \
-  ansible-galaxy install dev-sec.ssh-hardening && \
-  ansible-galaxy install nvidia.nvidia_driver && \
-  ansible-galaxy install nvidia.nvidia_docker && \
-  ansible-galaxy install oefenweb.fail2ban && \
-  ansible-galaxy install andrewrothstein.etcd-cluster
+  apt-get install -y --no-install-recommends ansible ssh vim nano iputils-ping && \
+  ansible-galaxy install -r /tmp/requirements.yml
+
 
 ENV ANSIBLE_HOST_KEY_CHECKING false
 ENV ANSIBLE_TRANSFORM_INVALID_GROUP_CHARS ignore

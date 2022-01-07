@@ -1,0 +1,34 @@
+- name: Add telegraf to docker group
+  shell: usermod -aG docker telegraf
+
+- name: Create telegraf.d directory if it does not exist
+  file:
+    path: /etc/telegraf/telegraf.d/
+    state: directory
+    mode: '0755'
+
+- name: Copy {{ stage }} {{ location }} specific config
+  copy:
+    src: "../../env/{{ stage }}/{{ location }}/telegraf.conf"
+    dest: "/etc/telegraf/telegraf.d/{{ stage }}-{{ location }}.conf"
+    group: telegraf
+    owner: telegraf
+    mode: '0640'
+
+- name: Create /opt/sgre/telegraf/ directory if it does not exist
+  file:
+    path: /opt/sgre/telegraf/
+    state: directory
+    mode: '0755'
+
+- name: Copy telegraf script
+  copy:
+    src: ../../includes/check-path.sh
+    dest: /opt/sgre/telegraf/check-path.sh
+    group: root
+    mode: '0755'
+
+- name: Restart telegraf
+  ansible.builtin.service:
+    name: telegraf
+    state: restarted

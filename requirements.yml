@@ -1,0 +1,7 @@
+- src: dev-sec.os-hardening
+- src: dev-sec.ssh-hardening
+- src: nvidia.nvidia_driver
+- src: nvidia.nvidia_docker
+- src: oefenweb.fail2ban
+- src: andrewrothstein.etcd-cluster
+- src: dj-wasabi.telegraf

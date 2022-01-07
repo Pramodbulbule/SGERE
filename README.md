@@ -21,7 +21,9 @@ This module uses active user's private/public key pair, thus the the image canno
 | **11_window_manager.yml** | Install XFCE windows manager and VNC server |
 | **12_pip3.yml** | Install pip |
 | **13_ntpd.yml** | Install and configure ntpd server |
-
+| **14_TODO.yml** | TODO |
+| **15_etcdkeeper.yml** | Install and etcdkeeper UI |
+| **16_telegraf.yml** | Install and telegraf server |
 # Initial steps
 
 To be able to run playbooks user needs to build *em-provisioning* container locally and run it.
@@ -89,9 +91,21 @@ ansible-playbook -i env/<env>/<location>/<inventory-file> 11_window_manager.yml 
 ```
 ansible-playbook -i env/<env>/<location>/<inventory-file> 12_pip3.yml --extra-vars "variable_hosts=hostname"
 ```
-13. Install and configure ntpd server
+15. Install and configure ntpd server
 ```
 ansible-playbook -i env/<env>/<location>/<inventory-file> 13_ntpd.yml --extra-vars "variable_hosts=hostname"
+```
+16. IN PROGRESS
+```
+ansible-playbook -i env/<env>/<location>/<inventory-file> 14_IN_PROGRES.yml --extra-vars "variable_hosts=hostname"
+```
+17. Install and etcdkeeper UI
+```
+ansible-playbook -i env/<env>/<location>/<inventory-file> 15_etcdkeeper.yml --extra-vars "variable_hosts=hostname"
+```
+18. Install and configure telegraf server
+```
+ansible-playbook -i env/<env>/<location>/<inventory-file> 16_telegraf.yml --extra-vars "variable_hosts=hostname"  --extra-vars instrumentation_key=<app-insights-instrumentation-key>
 ```
 
 # Working with single barebone
