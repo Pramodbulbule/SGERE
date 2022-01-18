@@ -8,10 +8,20 @@
     update_cache: yes
   async: 180
   become: yes
+  
+- name: az login
+  shell: az login --service-principal --username {{ client_id }} --password {{ client_password }} --tenant {{ tenant_id }}
+
+- name: az subscription
+  shell: az account set --subscription {{ subscription_id }}
+  
+- name: Retrieve connection string
+  shell: az config set extension.use_dynamic_install=yes_without_prompt && az iot hub device-identity connection-string show --device-id {{ deviceid }} --hub-name {{ iothub_name }} --key-type primary --resource-group {{ resource_group }} --query [connectionString] -o tsv
+  register: connection_string
 
 - name: Setting connection string and protocol
   shell: |
-      yq eval '.provisioning.device_connection_string = "{{ connectionString }}"' /etc/iotedge/config.yaml
+      yq eval '.provisioning.device_connection_string = "{{ connection_string }}"' /etc/iotedge/config.yaml
       yq eval '.agent.env.UpstreamProtocol = "AmqpWs"' /etc/iotedge/config.yaml
   become: yes
   notify: restart iotedge service

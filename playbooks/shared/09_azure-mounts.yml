@@ -2,7 +2,7 @@
   become: true
   roles:
     - ms-repo
-    - azure-fuse
+    - azure-fuse    
     - role: mount-storage
       mount_name: models
       fuse_cfg_name: mlmodels_fuse.cfg

@@ -12,10 +12,36 @@
 
 - name: Copy config
   copy:
-    src: ../../includes/fuse_connections/{{ fuse_cfg_name }}
+    src: ../../includes/fuse_connections/env/{{ stage }}/{{ location }}/{{ fuse_cfg_name }}
     dest: /etc/fuse_connections/{{ fuse_cfg_name }}
     group: root
     mode: '0600'
+  
+- name: az login
+  shell: az login --service-principal --username {{ client_id }} --password {{ client_password }} --tenant {{ tenant_id }}
+
+- name: az subscription
+  shell: az account set --subscription {{ subscription_id }}
+  
+- name: retrieve date
+  command: date +'%Y-%m-%d' -d '+3 years'
+  register: end_date
+
+- name: Retrieve Storage account name from cfg file
+  shell: cat /etc/fuse_connections/{{ fuse_cfg_name }} | grep accountName | awk '{print $2}'
+  register: storage_account_name
+
+- name: Retrieve Container name from cfg file
+  shell: cat /etc/fuse_connections/{{ fuse_cfg_name }} | grep containerName | awk '{print $2}'
+  register: container_name  
+
+- name: Retrieve secret
+  command: az storage container generate-sas --account-name {{ storage_account_name.stdout }} --expiry {{ end_date.stdout }} --name {{ container_name.stdout }} --permissions dlrw
+  register: sas_token_value
+
+- name: Retrieve Storage account name from cfg file
+  shell: cat /etc/fuse_connections/{{ fuse_cfg_name }} | grep accountName | awk '{print $2}'
+  register: storage_account_name
 
 - name: Create mount directory if it does not exist
   file:

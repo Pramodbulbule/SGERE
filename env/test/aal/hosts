@@ -1,6 +1,6 @@
 [edgemachines]
-dkalledgetest1 ansible_host=192.168.8.90
-dkalledgetest2 ansible_host=192.168.8.91
+dkalledgetest1 ansible_host=192.168.8.90 deviceid="EDQLTDVLGENOBAWE01-qlt-edge-1"
+dkalledgetest2 ansible_host=192.168.8.91 deviceid="EDQLTDVLGENOBAWE01-qlt-edge-2"
 
 [all:vars]
 default_user=sgre
@@ -9,3 +9,9 @@ default_user=sgre
 ansible_python_interpreter=/usr/bin/python3
 stage=test
 location=aal
+client_id=""
+client_password=""
+tenant_id="12f921d8-f30d-4596-a652-7045b338485a"
+subscription_id="71baf34c-2c2c-428d-b367-2ebb03b795f6"
+resource_group="RGQLTDVLGENOBAWE01"
+iothub_name="IOTQLTDVLGENOBAWE01-iot-hub"

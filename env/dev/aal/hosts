@@ -1,12 +1,20 @@
 [edgemachines]
-dkalldev1  ansible_host=192.168.8.101  connectionString=
-dkaaldev2  ansible_host=192.168.8.225 connectionString=
-edge2      ansible_host=192.168.8.15 connectionString=
-edge4      ansible_host=192.168.8.30 connectionString=
+dkalldev1  ansible_host=192.168.8.101  deviceid="EDDEVDVLGENOBAWE01-dev1-edge-device-1"
+dkaaldev2  ansible_host=192.168.8.225 deviceid="EDDEVDVLGENOBAWE01-dev1-edge-device-2"
 
 
 [all:vars]
 default_user=ubuntu
-ansible_python_interpreter=/usr/bin/python3
-stage=dev
-location=aal
+client_id=""
+client_password=""
+tenant_id="12f921d8-f30d-4596-a652-7045b338485a"
+subscription_id="cbe9d379-0f71-4dbc-994b-804713d41dec"
+resource_group="RGDEVDVLGENOBAWE01"
+iothub_name="IOTDEVDVLGENOBAWE01-iot-hub-dev1-sgre"
+
+[etcd]
+edge[1:4]
+
+# voting members
+[etcd-master]
+edge[1:3]

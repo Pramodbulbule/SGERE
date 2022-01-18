@@ -1,12 +1,12 @@
 [edgemachines]
-dkaalprod1 ansible_host=192.168.8.201
-dkaalprod2 ansible_host=192.168.8.202
-dkaalprod3 ansible_host=192.168.8.203
-dkaalprod4 ansible_host=192.168.8.204
-dkaalprod5 ansible_host=192.168.8.205
-dkaalprod6 ansible_host=192.168.8.206
-dkaalprod7 ansible_host=192.168.8.207
-dkaalprod8 ansible_host=192.168.8.208
+dkaalprod1 ansible_host=192.168.8.201 deviceid="EDPRDDVLGENOBAWE02-prd-edge-1"
+dkaalprod2 ansible_host=192.168.8.202 deviceid="EDPRDDVLGENOBAWE02-prd-edge-2"
+dkaalprod3 ansible_host=192.168.8.203 deviceid="EDPRDDVLGENOBAWE02-prd-edge-3"
+dkaalprod4 ansible_host=192.168.8.204 deviceid="EDPRDDVLGENOBAWE02-prd-edge-4"
+dkaalprod5 ansible_host=192.168.8.205 deviceid="EDPRDDVLGENOBAWE02-prd-edge-5"
+dkaalprod6 ansible_host=192.168.8.206 deviceid="EDPRDDVLGENOBAWE02-prd-edge-6"
+dkaalprod7 ansible_host=192.168.8.207 deviceid="EDPRDDVLGENOBAWE02-prd-edge-7"
+dkaalprod8 ansible_host=192.168.8.208 deviceid="EDPRDDVLGENOBAWE02-prd-edge-8"
 
 
 [all:vars]
@@ -14,3 +14,9 @@ default_user=sgre
 ansible_python_interpreter=/usr/bin/python3
 stage=prod
 location=aal
+client_id=""
+client_password=""
+tenant_id="12f921d8-f30d-4596-a652-7045b338485a"
+subscription_id="71baf34c-2c2c-428d-b367-2ebb03b795f6"
+resource_group="RGPRDDVLGENOBAWE01"
+iothub_name="IOTPRDDVLGENOBAWE02-iot-hub"
