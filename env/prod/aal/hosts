@@ -17,6 +17,6 @@ location=aal
 client_id=""
 client_password=""
 tenant_id="12f921d8-f30d-4596-a652-7045b338485a"
-subscription_id="71baf34c-2c2c-428d-b367-2ebb03b795f6"
+subscription_id="1f64d51f-a415-4ccb-bb1d-873d8c727884"
 resource_group="RGPRDDVLGENOBAWE01"
 iothub_name="IOTPRDDVLGENOBAWE02-iot-hub"
