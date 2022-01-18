@@ -5,6 +5,8 @@ dkaaldev2  ansible_host=192.168.8.225 deviceid="EDDEVDVLGENOBAWE01-dev1-edge-dev
 
 [all:vars]
 default_user=ubuntu
+stage=dev
+location=aal
 client_id=""
 client_password=""
 tenant_id="12f921d8-f30d-4596-a652-7045b338485a"
