@@ -39,9 +39,11 @@
   command: az storage container generate-sas --account-name {{ storage_account_name.stdout }} --expiry {{ end_date.stdout }} --name {{ container_name.stdout }} --permissions dlrw
   register: sas_token_value
 
-- name: Retrieve Storage account name from cfg file
-  shell: cat /etc/fuse_connections/{{ fuse_cfg_name }} | grep accountName | awk '{print $2}'
-  register: storage_account_name
+- name: "Replace sas token value in cfg files"
+  ansible.builtin.replace:
+    path: /etc/fuse_connections/{{ fuse_cfg_name }}
+    regexp: 'sasToken'
+    replace: 'sasToken {{ sas_token_value.stdout }}'
 
 - name: Create mount directory if it does not exist
   file:
