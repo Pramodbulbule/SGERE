@@ -38,10 +38,6 @@
         config:
           - ignore_fs = ["tmpfs", "devtmpfs", "devfs", "iso9660", "overlay", "aufs", "squashfs"]
           - fieldpass = ["free", "disk_used", "used_percent"]
-      - plugin: diskio
-        config:
-        - devices = ["sda"]
-        - fieldpass = ["read_time", "write_time", "iops_in_progress"]
       - plugin: mem
         config:
           - fieldpass = ["available","available_percent", "used_percent"]
@@ -49,6 +45,8 @@
         config:
           - attributes = true
           - devices = [ "/dev/sda" ]
+          - path = "/usr/sbin/smartctl"
+          - use_sudo = true          
       - plugin: system
         config:
           - fieldpass = ["uptime","n_cpus"]
@@ -68,7 +66,7 @@
           - fielddrop = ["usage_system", "usage_total"]
       - plugin: exec
         config:
-        - commands = [ "/opt/sgre/telegraf/check-path.sh /mnt/azure/cad/{{ location }}" ]
+        - commands = [ "/opt/sgre/telegraf/check-mount.sh cad /mnt/azure/cad" ]
         - timeout = "5s"
         - name_override = "cad"
         - name_suffix = ""
@@ -79,9 +77,9 @@
           ]
       - plugin: exec
         config:
-        - commands = [ "/opt/sgre/telegraf/check-path.sh /mnt/azure/camera-params/camera-settings/{{ location }}" ]
+        - commands = [ "/opt/sgre/telegraf/check-mount.sh camera-params /mnt/azure/camera-params" ]
         - timeout = "5s"
-        - name_override = "camera_settings"
+        - name_override = "camera_params"
         - name_suffix = ""
         - data_format = "json"
         - tag_keys = [
@@ -90,9 +88,9 @@
           ]
       - plugin: exec
         config:
-        - commands = [ "/opt/sgre/telegraf/check-path.sh /mnt/azure/models/triton" ]
+        - commands = [ "/opt/sgre/telegraf/check-mount.sh models /mnt/azure/models" ]
         - timeout = "5s"
-        - name_override = "models_triton"
+        - name_override = "models"
         - name_suffix = ""
         - data_format = "json"
         - tag_keys = [
@@ -101,7 +99,7 @@
           ]
       - plugin: exec
         config:
-        - commands = [ "/opt/sgre/telegraf/check-path.sh /mnt/azure/data-provisioning/{{ location }}" ]
+        - commands = [ "/opt/sgre/telegraf/check-mount.sh data-provisioning /mnt/azure/data-provisioning" ]
         - timeout = "5s"
         - name_override = "data_provisioning"
         - name_suffix = ""
@@ -112,7 +110,7 @@
           ]
       - plugin: exec
         config:
-        - commands = [ "/opt/sgre/telegraf/check-path.sh /mnt/azure/calibration/{{ location }}" ]
+        - commands = [ "/opt/sgre/telegraf/check-mount.sh calibration /mnt/azure/calibration" ]
         - timeout = "5s"
         - name_override = "calibration"
         - name_suffix = ""
@@ -121,6 +119,17 @@
             "name",
             "path"
           ]
+      - plugin: exec
+        config:
+        - commands = [ "/opt/sgre/telegraf/check-mount.sh retrain /mnt/azure/retrain" ]
+        - timeout = "5s"
+        - name_override = "retrain"
+        - name_suffix = ""
+        - data_format = "json"
+        - tag_keys = [
+            "name",
+            "path"
+          ]          
       - plugin: procstat
         config:
         - systemd_unit = "etcd.service"

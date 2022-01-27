@@ -7,13 +7,13 @@
     state: directory
     mode: '0755'
 
-- name: Copy {{ stage }} {{ location }} specific config
-  copy:
-    src: "../../env/{{ stage }}/{{ location }}/telegraf.conf"
-    dest: "/etc/telegraf/telegraf.d/{{ stage }}-{{ location }}.conf"
-    group: telegraf
-    owner: telegraf
-    mode: '0640'
+# - name: Copy {{ stage }} {{ location }} specific config
+#   copy:
+#     src: "../../env/{{ stage }}/{{ location }}/telegraf.conf"
+#     dest: "/etc/telegraf/telegraf.d/{{ stage }}-{{ location }}.conf"
+#     group: telegraf
+#     owner: telegraf
+#     mode: '0640'
 
 - name: Create /opt/sgre/telegraf/ directory if it does not exist
   file:
@@ -23,10 +23,19 @@
 
 - name: Copy telegraf script
   copy:
-    src: ../../includes/check-path.sh
-    dest: /opt/sgre/telegraf/check-path.sh
+    src: ../../includes/check-mount.sh
+    dest: /opt/sgre/telegraf/check-mount.sh
     group: root
     mode: '0755'
+
+- name: Copy telegraf sudoers
+  copy:
+    src: ../../includes/telegraf-sudoers
+    dest: /etc/sudoers.d/telegraf
+    owner: root
+    group: root
+    mode: ug+rwX,o=
+    force: yes
 
 - name: Restart telegraf
   ansible.builtin.service:
