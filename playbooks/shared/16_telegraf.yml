@@ -64,6 +64,7 @@
           - total_include = ["cpu", "blkio", "network"]
           - fieldpass = ["n_images", "n_containers_running", "n_containers_stopped", "exitcode", "usage", "usage_system", "usage_total", "usage_percent", "health_status", "docker_container_cpu_usage_percent"]
           - fielddrop = ["usage_system", "usage_total"]
+          - container_state_include = ["created", "restarting", "running", "removing", "paused", "exited", "dead"]
       - plugin: exec
         config:
         - commands = [ "/opt/sgre/telegraf/check-mount.sh cad /mnt/azure/cad" ]
