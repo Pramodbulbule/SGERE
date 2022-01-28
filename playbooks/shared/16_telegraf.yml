@@ -62,7 +62,7 @@
           - perdevice_include = ["blkio", "network"]
           - total = true
           - total_include = ["cpu", "blkio", "network"]
-          - fieldpass = ["n_images", "n_containers_running", "n_containers_stopped", "exitcode", "usage", "usage_system", "usage_total", "usage_percent", "health_status", "docker_container_cpu_usage_percent"]
+          - fieldpass = ["n_images", "n_containers_running", "n_containers_stopped", "usage", "usage_system", "usage_total", "usage_percent", "health_status", "docker_container_cpu_usage_percent"]
           - fielddrop = ["usage_system", "usage_total"]
           - container_state_include = ["created", "restarting", "running", "removing", "paused", "exited", "dead"]
       - plugin: exec
@@ -130,6 +130,16 @@
         - tag_keys = [
             "name",
             "path"
+          ]
+      - plugin: exec
+        config:
+        - commands = [ "/opt/sgre/telegraf/check-container.sh laser-hub" ]
+        - timeout = "5s"
+        - name_override = "laser_hub"
+        - name_suffix = ""
+        - data_format = "json"
+        - tag_keys = [
+            "container_name"
           ]          
       - plugin: procstat
         config:

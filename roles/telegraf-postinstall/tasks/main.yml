@@ -21,12 +21,19 @@
     state: directory
     mode: '0755'
 
-- name: Copy telegraf script
+- name: Copy telegraf script check-mount.sh
   copy:
     src: ../../includes/check-mount.sh
     dest: /opt/sgre/telegraf/check-mount.sh
     group: root
     mode: '0755'
+
+- name: Copy telegraf script check-container.sh
+  copy:
+    src: ../../includes/check-container.sh
+    dest: /opt/sgre/telegraf/check-container.sh
+    group: root
+    mode: '0755'    
 
 - name: Copy telegraf sudoers
   copy:
