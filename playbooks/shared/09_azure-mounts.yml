@@ -2,7 +2,8 @@
   become: true
   roles:
     - ms-repo
-    - azure-fuse    
+    - azure-fuse
+    - azure-cli
     - role: mount-storage
       mount_name: models
       fuse_cfg_name: mlmodels_fuse.cfg
@@ -27,3 +28,11 @@
       mount_name: camera-params
       fuse_cfg_name: camera_params_fuse.cfg
       mount_folder: /mnt/azure
+    - role: mount-storage
+      mount_name: data-provisioning
+      fuse_cfg_name: data_provisioning_fuse.cfg
+      mount_folder: /mnt/azure
+    - role: mount-storage
+      mount_name: blade-design
+      fuse_cfg_name: blade_design_fuse.cfg
+      mount_folder: /mnt/azure      

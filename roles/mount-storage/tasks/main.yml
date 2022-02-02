@@ -43,7 +43,7 @@
   ansible.builtin.replace:
     path: /etc/fuse_connections/{{ fuse_cfg_name }}
     regexp: 'sasToken'
-    replace: 'sasToken {{ sas_token_value.stdout }}'
+    replace: 'sasToken {{ sas_token_value.stdout[1:-1] }}'
 
 - name: Create mount directory if it does not exist
   file:

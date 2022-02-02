@@ -1,0 +1,2 @@
+#!/bin/bash
+blobfuse /mnt/azure/blade-design --tmp-path=/mnt/azure/fusetmp/blade-design --config-file=/etc/fuse_connections/blade_design_fuse.cfg -o attr_timeout=240 -o entry_timeout=240 -o negative_timeout=120 -o nonempty -o allow_other
