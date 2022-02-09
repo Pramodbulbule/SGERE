@@ -21,8 +21,8 @@
 
 - name: Setting connection string and protocol
   shell: |
-      yq eval '.provisioning.device_connection_string = "{{ connection_string }}"' /etc/iotedge/config.yaml
-      yq eval '.agent.env.UpstreamProtocol = "AmqpWs"' /etc/iotedge/config.yaml
+      yq eval -i '.provisioning.device_connection_string = "{{ connection_string.stdout }}"' /etc/iotedge/config.yaml
+      yq eval -i '.agent.env.UpstreamProtocol = "AmqpWs"' /etc/iotedge/config.yaml
   become: yes
   notify: restart iotedge service
 
