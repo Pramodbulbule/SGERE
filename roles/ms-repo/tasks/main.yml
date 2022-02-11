@@ -2,9 +2,6 @@
   ansible.builtin.apt_repository:
     repo: deb [arch=amd64] https://packages.microsoft.com/ubuntu/18.04/prod bionic main
     state: present
-# - name: Install MS product repository
-#   apt: deb=/tmp/packages-microsoft-prod.deb
-#   become: true
 - name: Make sure HTTPS is supported by apt
   apt:
     name: apt-transport-https
