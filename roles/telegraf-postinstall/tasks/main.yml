@@ -35,6 +35,13 @@
     group: root
     mode: '0755'    
 
+- name: Copy telegraf script check-nvidia.sh
+  copy:
+    src: ../../includes/check-nvidia.sh
+    dest: /opt/sgre/telegraf/check-nvidia.sh
+    group: root
+    mode: '0755'    
+
 - name: Copy telegraf sudoers
   copy:
     src: ../../includes/telegraf-sudoers

@@ -140,7 +140,14 @@
         - data_format = "json"
         - tag_keys = [
             "container_name"
-          ]          
+          ]
+      - plugin: exec
+        config:
+        - commands = [ "/opt/sgre/telegraf/check-nvidia.sh" ]
+        - timeout = "5s"
+        - name_override = "nvidia_smi"
+        - name_suffix = ""
+        - data_format = "json"      
       - plugin: procstat
         config:
         - systemd_unit = "etcd.service"
