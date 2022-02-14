@@ -7,13 +7,13 @@
     state: directory
     mode: '0755'
 
-# - name: Copy {{ stage }} {{ location }} specific config
-#   copy:
-#     src: "../../env/{{ stage }}/{{ location }}/telegraf.conf"
-#     dest: "/etc/telegraf/telegraf.d/{{ stage }}-{{ location }}.conf"
-#     group: telegraf
-#     owner: telegraf
-#     mode: '0640'
+- name: Copy {{ stage }} {{ location }} specific config
+  copy:
+    src: "../../env/{{ stage }}/{{ location }}/telegraf.conf"
+    dest: "/etc/telegraf/telegraf.d/{{ stage }}-{{ location }}.conf"
+    group: telegraf
+    owner: telegraf
+    mode: '0640'
 
 - name: Create /opt/sgre/telegraf/ directory if it does not exist
   file:

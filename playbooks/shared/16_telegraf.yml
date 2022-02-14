@@ -10,7 +10,7 @@
   vars:
     telegraf_agent_package_state: latest
     telegraf_agent_package_method: repo
-    telegraf_agent_package_version: 1.21.2
+    telegraf_agent_package_version: 1.21.3
     telegraf_agent_interval: 300
     telegraf_agent_debug: False
     telegraf_agent_quiet: False
