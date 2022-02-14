@@ -1,0 +1,6 @@
+- name: Install jq
+  apt:
+    name: ["jq"]
+    update_cache: yes
+  async: 180
+  become: yes
