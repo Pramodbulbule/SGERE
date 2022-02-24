@@ -2,3 +2,5 @@
   become: true
   roles:
     - install-jq
+    - install-nload
+    - install-log-formatter
