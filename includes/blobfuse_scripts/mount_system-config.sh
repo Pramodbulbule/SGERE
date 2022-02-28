@@ -1,0 +1,2 @@
+#!/bin/bash
+blobfuse /mnt/azure/system-config --tmp-path=/mnt/azure/fusetmp/system-config --config-file=/etc/fuse_connections/system_config_fuse.cfg -o attr_timeout=240 -o entry_timeout=240 -o negative_timeout=120 -o nonempty -o allow_other

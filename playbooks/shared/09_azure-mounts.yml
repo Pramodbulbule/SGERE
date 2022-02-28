@@ -35,4 +35,8 @@
     - role: mount-storage
       mount_name: blade-design
       fuse_cfg_name: blade_design_fuse.cfg
+      mount_folder: /mnt/azure
+    - role: mount-storage
+      mount_name: system-config
+      fuse_cfg_name: system_config_fuse.cfg
       mount_folder: /mnt/azure      
