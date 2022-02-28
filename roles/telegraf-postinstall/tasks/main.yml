@@ -42,6 +42,13 @@
     group: root
     mode: '0755'    
 
+- name: Copy telegraf script check-space.sh
+  copy:
+    src: ../../includes/check-space.sh
+    dest: /opt/sgre/telegraf/check-space.sh
+    group: root
+    mode: '0755'    
+
 - name: Copy telegraf sudoers
   copy:
     src: ../../includes/telegraf-sudoers
