@@ -36,7 +36,7 @@
   register: container_name  
 
 - name: Retrieve secret
-  command: az storage container generate-sas --account-name {{ storage_account_name.stdout }} --expiry {{ end_date.stdout }} --name {{ container_name.stdout }} --permissions dlrw
+  command: az storage container generate-sas --account-name {{ storage_account_name.stdout }} --expiry {{ end_date.stdout }} --name {{ container_name.stdout }} --permissions dlrw --only-show-errors -o tsv
   register: sas_token_value
 
 - name: "Replace sas token value in cfg files"
