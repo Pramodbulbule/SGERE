@@ -27,7 +27,7 @@
 - name: install ubuntu-drivers and Nvidia
   apt:
     name: 
-    - nvidia-driver-495
+    - nvidia-driver-510
     state: present
 - name: install cuda
   apt:
