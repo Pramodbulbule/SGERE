@@ -2,25 +2,38 @@ users:
   - username: ksushma
     groups: admins
   - username: brevanasiddappa
-    groups: admins
-  - username: mhoffmann
     groups: developers
+  - username: mhoffmann
+    groups: admins
   - username: jabhishek
     groups: admins
   - username: mkolipost
     groups: developers
   - username: drannacher
-    groups: developers  
+    groups: admins
   - username: rkranthi
     groups: developers
   - username: nkarthikeyan
     groups: developers
   - username: bdmadhavi
-    groups: developers    
+    groups: admins    
   - username: bashfaq
     groups: developers
   - username: bdebtaru
     groups: developers
   - username: ckaran
     groups: admins    
-    
+  - username: zzaiyong
+    groups: developers
+  - username: mskaringa
+    groups: admins
+  - username: bpramod
+    groups: admins
+  - username: drakeshkumar
+    groups: developers
+  - username: cguenther
+    groups: developers
+  - username: jbedzinskas
+    groups: admins
+  - username: jdevendra
+    groups: admins

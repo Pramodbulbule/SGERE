@@ -1,0 +1,32 @@
+[edgemachines]
+frlehprod01 ansible_host=192.168.8.221 deviceid="EDPRDDVLGENOBLWE01-prd-edge-1"
+frlehprod02 ansible_host=192.168.8.222 deviceid="EDPRDDVLGENOBLWE01-prd-edge-2"
+frlehprod03 ansible_host=192.168.8.223 deviceid="EDPRDDVLGENOBLWE01-prd-edge-3"
+frlehprod04 ansible_host=192.168.8.224 deviceid="EDPRDDVLGENOBLWE01-prd-edge-4"
+frlehprod05 ansible_host=192.168.8.225 deviceid="EDPRDDVLGENOBLWE01-prd-edge-5"
+frlehprod06 ansible_host=192.168.8.226 deviceid="EDPRDDVLGENOBLWE01-prd-edge-6"
+frlehprod07 ansible_host=192.168.8.227 deviceid="EDPRDDVLGENOBLWE01-prd-edge-7"
+frlehprod08 ansible_host=192.168.8.228 deviceid="EDPRDDVLGENOBLWE01-prd-edge-8"
+frlehprod09 ansible_host=192.168.8.229 deviceid="EDPRDDVLGENOBLWE01-prd-edge-9"
+frlehprod10 ansible_host=192.168.8.230 deviceid="EDPRDDVLGENOBLWE01-prd-edge-10"
+frlehprod11 ansible_host=192.168.8.231 deviceid="EDPRDDVLGENOBLWE01-prd-edge-11"
+frlehprod12 ansible_host=192.168.8.232 deviceid="EDPRDDVLGENOBLWE01-prd-edge-12"
+frlehprod13 ansible_host=192.168.8.233 deviceid="EDPRDDVLGENOBLWE01-prd-edge-13"
+frlehprod14 ansible_host=192.168.8.234 deviceid="EDPRDDVLGENOBLWE01-prd-edge-14"
+
+
+
+
+
+
+[all:vars]
+default_user=sgre
+ansible_python_interpreter=/usr/bin/python3
+stage=prod
+location=leh
+client_id=""
+client_password=""
+tenant_id="12f921d8-f30d-4596-a652-7045b338485a"
+subscription_id="1f64d51f-a415-4ccb-bb1d-873d8c727884"
+resource_group="RGPRDDVLGENOBAWE02"
+iothub_name="ihprdobllehwe"

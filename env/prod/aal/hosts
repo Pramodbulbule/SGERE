@@ -7,6 +7,10 @@ dkaalprod5 ansible_host=192.168.8.205 deviceid="EDPRDDVLGENOBAWE02-prd-edge-5"
 dkaalprod6 ansible_host=192.168.8.206 deviceid="EDPRDDVLGENOBAWE02-prd-edge-6"
 dkaalprod7 ansible_host=192.168.8.207 deviceid="EDPRDDVLGENOBAWE02-prd-edge-7"
 dkaalprod8 ansible_host=192.168.8.208 deviceid="EDPRDDVLGENOBAWE02-prd-edge-8"
+dkaalprod9 ansible_host=192.168.8.209 deviceid="EDPRDDVLGENOBAWE02-prd-edge-9"
+dkaalprod10 ansible_host=192.168.8.210 deviceid="EDPRDDVLGENOBAWE02-prd-edge-10"
+dkaalprod11 ansible_host=192.168.8.211 deviceid="EDPRDDVLGENOBAWE02-prd-edge-11"
+dkaalprod12 ansible_host=192.168.8.212 deviceid="EDPRDDVLGENOBAWE02-prd-edge-12"
 
 
 [all:vars]
@@ -16,7 +20,7 @@ stage=prod
 location=aal
 client_id=""
 client_password=""
-tenant_id="12f921d8-f30d-4596-a652-7045b338485a"
+tenant_id=""
 subscription_id="1f64d51f-a415-4ccb-bb1d-873d8c727884"
 resource_group="RGPRDDVLGENOBAWE01"
 iothub_name="IOTPRDDVLGENOBAWE02-iot-hub"
