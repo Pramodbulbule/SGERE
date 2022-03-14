@@ -1,0 +1,27 @@
+- name: Set Password Expiration Days
+  lineinfile:
+    dest: '/etc/login.defs'
+    regexp: "PASS_MAX_DAYS"
+    line: "PASS_MAX_DAYS 45"
+    state: present
+
+- name: Set Password Expiration Days
+  lineinfile:
+    dest: '/etc/login.defs'
+    regexp: "PASS_MIN_DAYS"
+    line: "PASS_MIN_DAYS 7"
+    state: present
+
+- name: Set Password Length
+  lineinfile:
+    dest: '/etc/login.defs'
+    regexp: "PASS_MIN_LEN"
+    line: "PASS_MIN_LEN 15"
+    state: present
+
+- name: Set Password Aging
+  lineinfile:
+    dest: '/etc/login.defs'
+    regexp: "PASS_WARN_AGE"
+    line: "PASS_WARN_AGE 15"
+    state: present    

@@ -9,9 +9,9 @@ This module uses active user's private/public key pair, thus the the image canno
 | Playbook | Description |
 | ------------- |-------------|
 | **01_users.yml** | Create necessary groups (admins, developers), users and pushes their public keys to target machine |
-| **02_hardening.yml** | Harden the server OS and SSH service |
-| **03_nvidia.yml** | Install nvidia drivers |
-| **04_iotedge.yml** | Install IoT Edge dependencies |
+| **02_nvidia.yml** | Install nvidia drivers |
+| **03_iotedge.yml** | Install IoT Edge dependencies |
+| **04_hardening.yml** | Harden the server OS and SSH service |
 | **05_fail2ban.yml** | Install fail2ban tool |
 | **06_mounts.yml** | Mount NFS and second partition under /mnt |
 | **07_etcd.yml** | Install etcd server |
@@ -24,6 +24,7 @@ This module uses active user's private/public key pair, thus the the image canno
 | **14_TODO.yml** | TODO |
 | **15_etcdkeeper.yml** | Install and etcdkeeper UI |
 | **16_telegraf.yml** | Install and telegraf server |
+| **17_additional-utils.yml** | Install random additional utils, e.g for monitoring |
 # Initial steps
 
 To be able to run playbooks user needs to build *em-provisioning* container locally and run it.

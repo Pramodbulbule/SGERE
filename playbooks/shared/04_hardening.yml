@@ -1,17 +1,69 @@
-# ansible-os-hardening.yaml
 - hosts: "{{ variable_hosts | default('all') }}"
   become: true
-  roles:
-    - dev-sec.os-hardening
+  collections:
+    - devsec.hardening
 
-# ansible-ssh-hardening.yaml 
-- hosts: "{{ variable_hosts | default('all') }}"
-  become: true
   roles:
-    - dev-sec.ssh-hardening
-  vars:
-    ssh_server_password_login: true
-    sshd_authenticationmethods: 'publickey password'
-    sftp_enabled: true
-    ssh_allow_tcp_forwarding: 'yes'
-    ssh_x11_forwarding: true
+    - role: devsec.hardening.os_hardening
+    - role: devsec.hardening.ssh_hardening
+      vars:
+        ssh_server_password_login: true
+        sshd_authenticationmethods: 'publickey password'
+        sftp_enabled: true
+        ssh_allow_tcp_forwarding: 'yes'
+        ssh_x11_forwarding: true
+        sshd_log_level: 'INFO'
+        ssh_login_grace_time: 60s
+        ssh_max_auth_retries: 4
+        ssh_client_alive_interval: 300
+        ssh_client_alive_count: 5
+        sysctl_overwrite:
+          net.ipv6.route.flush: 1
+          net.ipv4.route.flush: 1
+    - role: login-hardening
+
+  tasks:
+  - name: verify sysctl configuration
+    become: 'yes'
+    ansible.builtin.shell: grep -R "^{{ item }}$" /etc/sysctl.*
+    register: sysctl_config
+    failed_when: sysctl_config.rc != 0
+    changed_when: sysctl_config.rc != 0
+    with_items:    
+      - fs.suid_dumpable=0
+      - kernel.randomize_va_space=2
+      - net.ipv6.conf.default.accept_redirects=0
+      - net.ipv6.conf.all.accept_ra=0
+      - net.ipv6.conf.all.accept_redirects=0
+      - net.ipv6.conf.default.accept_source_route=0
+      - net.ipv6.conf.all.forwarding=0
+      - net.ipv4.ip_forward=0
+      - net.ipv4.route.flush=1
+      - net.ipv4.conf.all.send_redirects=0
+      - net.ipv4.conf.default.send_redirects=0
+      - net.ipv4.conf.all.accept_source_route=0
+      - net.ipv4.conf.default.accept_source_route=0
+      - net.ipv4.conf.all.accept_redirects=0
+      - net.ipv4.conf.default.accept_redirects=0
+      - net.ipv4.conf.all.secure_redirects=0
+      - net.ipv4.conf.default.secure_redirects=0
+      - net.ipv4.conf.all.log_martians=1
+      - net.ipv4.conf.default.log_martians=1
+      - net.ipv4.icmp_echo_ignore_broadcasts=1
+      - net.ipv4.icmp_ignore_bogus_error_responses=1
+      - net.ipv4.conf.all.rp_filter=1
+      - net.ipv4.conf.default.rp_filter=1
+      - net.ipv4.tcp_syncookies=1
+      - net.ipv6.route.flush=1
+
+  - name: verify login.defs settings
+    become: 'yes'
+    ansible.builtin.shell: grep "^{{ item }}$" /etc/login.defs
+    register: login_defs
+    failed_when: login_defs.rc != 0
+    changed_when: login_defs.rc != 0
+    with_items:
+      - PASS_MAX_DAYS 45
+      - PASS_MIN_DAYS 7
+      - PASS_MIN_LEN 15      
+      - PASS_WARN_AGE 15
