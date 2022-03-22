@@ -8,6 +8,7 @@ This module uses active user's private/public key pair, thus the the image canno
 
 | Playbook | Description |
 | ------------- |-------------|
+| **00_package_specific_versions.yml** | Update packages to certain version |
 | **01_users.yml** | Create necessary groups (admins, developers), users and pushes their public keys to target machine |
 | **02_nvidia.yml** | Install nvidia drivers |
 | **03_iotedge.yml** | Install IoT Edge dependencies |
@@ -108,7 +109,10 @@ ansible-playbook -i env/<env>/<location>/<inventory-file> 15_etcdkeeper.yml --ex
 ```
 ansible-playbook -i env/<env>/<location>/<inventory-file> 16_telegraf.yml --extra-vars "variable_hosts=hostname"  --extra-vars instrumentation_key=<app-insights-instrumentation-key>
 ```
-
+19. Install specific versions of packages
+```
+ansible-playbook -i env/<env>/<location>/<inventory-file> 00_package_specific_versions.yml --extra-vars "variable_hosts=hostname"
+```
 # Working with single barebone
 
 Playbook(s) can be run for single barebone by overriding `variable_hosts` variable by adding extra variables:
