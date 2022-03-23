@@ -111,7 +111,7 @@ ansible-playbook -i env/<env>/<location>/<inventory-file> 16_telegraf.yml --extr
 ```
 19. Install specific versions of packages
 ```
-ansible-playbook -i env/<env>/<location>/<inventory-file> 00_package_specific_versions.yml --extra-vars "variable_hosts=hostname"
+ansible-playbook -i env/<env>/<location>/<inventory-file> 00_package_specific_versions.yml --extra-vars "variable_hosts=hostname" --extra-vars username=<prosoft_mount_username> --extra-vars password=<prosoft_mount_password>
 ```
 # Working with single barebone
 
