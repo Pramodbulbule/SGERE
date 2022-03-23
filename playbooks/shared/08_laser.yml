@@ -1,5 +1,11 @@
 - hosts: "{{ variable_hosts | default('all') }}"
   become: true
+  vars_prompt:
+  - name: username
+    prompt: What is your username?
+    private: no
+  - name: password
+    prompt: What is your password?
   tasks:
     - name: Create mounts
       include_role:
@@ -10,18 +16,18 @@
         - name: hall10-b9701u2
           mount_dir: /mnt/prosoft
           ip: 192.168.8.5
-          username: ob
-          password: SGRE-1234
+          username: "{{ username }}"
+          password: "{{ password }}"
           target_dir: B97-01_OpticalBlade
         - name: hall10-b9702u2
           mount_dir: /mnt/prosoft
           ip: 192.168.8.7
-          username: ob
-          password: SGRE-1234
+          username: "{{ username }}"
+          password: "{{ password }}"
           target_dir: B97-01_OpticalBlade
         - name: hall10-b9702u1
           mount_dir: /mnt/prosoft
           ip: 192.168.8.4
-          username: ob
-          password: SGRE-1234
+          username: "{{ username }}"
+          password: "{{ password }}"
           target_dir: B97-01_OpticalBlade
