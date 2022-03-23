@@ -31,7 +31,7 @@
           - iotedge=1.1.11-1
           - linux-headers-generic=5.4.0.26.32
           - linux-image-generic=5.4.0.105.109
-          - nvidia-driver-510=510.54-0ubuntu0.20.04.1
+          - nvidia-driver-510=510.47.03-0ubuntu1
           - nvidia-container-runtime=3.9.0-1
           - nvidia-container-toolkit=1.9.0-1 
           - cuda=11.6.1-1
