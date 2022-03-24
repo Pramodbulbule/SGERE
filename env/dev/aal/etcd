@@ -1,8 +1,12 @@
 [etcd]
-edge2
-edge4
+dkaaldev1
+dkaaldev2
+frlehdev1
+frlehdev2
 
 # voting members
 [etcd_master]
-edge2
-edge4
+dkaaldev1
+dkaaldev2
+frlehdev1
+frlehdev2
