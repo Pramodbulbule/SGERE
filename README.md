@@ -75,7 +75,7 @@ ansible-playbook -i env/<env>/<location>/<inventory-file> -i env/<env>/<location
 ```
 10. Add route to laser terminal and mount necessary shares
 ```
-ansible-playbook -i env/<env>/<location>/<inventory-file> 08_laser.yml --extra-vars "variable_hosts=hostname"
+ansible-playbook -i env/<env>/<location>/<inventory-file> 08_laser.yml --extra-vars "variable_hosts=hostname" --extra-vars prosoft_mount_username=<username> --extra-vars prosoft_mount_password=<password>
 ```
 11. Add azure blob storage mounts
 ```
@@ -111,7 +111,7 @@ ansible-playbook -i env/<env>/<location>/<inventory-file> 16_telegraf.yml --extr
 ```
 19. Install specific versions of packages
 ```
-ansible-playbook -i env/<env>/<location>/<inventory-file> 00_package_specific_versions.yml --extra-vars "variable_hosts=hostname" --extra-vars prosoft_mount_username=<username> --extra-vars prosoft_mount_password=<password>
+ansible-playbook -i env/<env>/<location>/<inventory-file> 00_package_specific_versions.yml --extra-vars "variable_hosts=hostname"
 ```
 # Working with single barebone
 
