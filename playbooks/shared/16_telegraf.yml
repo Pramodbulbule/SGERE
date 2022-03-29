@@ -4,6 +4,7 @@
     - telegraf-preinstall
     - dj-wasabi.telegraf
     - telegraf-postinstall
+    - telegraf-hold
   vars_prompt:
     - name: instrumentation_key
       prompt: Enter the Application Insights instrumentation key    
