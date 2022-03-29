@@ -97,7 +97,7 @@ ansible-playbook -i env/<env>/<location>/<inventory-file> 12_pip3.yml --extra-va
 ```
 ansible-playbook -i env/<env>/<location>/<inventory-file> 13_ntpd.yml --extra-vars "variable_hosts=hostname"
 ```
-16. IN PROGRESS
+16. Install telegraf agent
 ```
 ansible-playbook -i env/<env>/<location>/<inventory-file> 14_IN_PROGRES.yml --extra-vars "variable_hosts=hostname"
 ```
