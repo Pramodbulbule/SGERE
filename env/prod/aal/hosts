@@ -20,6 +20,7 @@ stage=prod
 location=aal
 client_id=""
 client_password=""
+keyvault_name="KVPRDDVLGENOBAWE01-kv"
 tenant_id=""
 subscription_id="1f64d51f-a415-4ccb-bb1d-873d8c727884"
 resource_group="RGPRDDVLGENOBAWE01"

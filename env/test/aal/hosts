@@ -13,6 +13,7 @@ stage=test
 location=aal
 client_id=""
 client_password=""
+keyvault_name="KVQLTDVLGENOBAWE01-kv"
 tenant_id="12f921d8-f30d-4596-a652-7045b338485a"
 subscription_id="71baf34c-2c2c-428d-b367-2ebb03b795f6"
 resource_group="RGQLTDVLGENOBAWE01"

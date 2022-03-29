@@ -1,12 +1,16 @@
 - hosts: "{{ variable_hosts | default('all') }}"
-  become: true
-  vars_prompt:
-  - name: prosoft_mount_username
-    prompt: Prosoft mount username
-    private: no
-  - name: prosoft_mount_password
-    prompt: Prosoft mount password
+  vars:
+    prosoft_mount_username_keyvault_key: prosoft-mount-username
+    prosoft_mount_password_keyvault_key: prosoft-mount-password
   tasks:
+    - name: Azure login
+      shell: az login --service-principal --username {{ client_id }} --password {{ client_password }} --tenant {{ tenant_id }}
+    - name: Get prosoft_mount_username_keyvault_key
+      shell: az keyvault secret show --name {{ prosoft_mount_username_keyvault_key }} --vault-name {{ keyvault_name }} --query value --output tsv
+      register: prosoft_mount_username
+    - name: Get prosoft_mount_password_keyvault_key
+      shell: az keyvault secret show --name {{ prosoft_mount_password_keyvault_key }} --vault-name {{ keyvault_name }} --query value --output tsv
+      register: prosoft_mount_password
     - name: Create mounts
       include_role:
         name: mount-laser-share
@@ -16,18 +20,18 @@
         - name: hall10-b9701u2
           mount_dir: /mnt/prosoft
           ip: 192.168.8.5
-          username: "{{ prosoft_mount_username }}"
-          password: "{{ prosoft_mount_password }}"
+          username: "{{ prosoft_mount_username.stdout }}"
+          password: "{{ prosoft_mount_password.stdout }}"
           target_dir: B97-01_OpticalBlade
         - name: hall10-b9702u2
           mount_dir: /mnt/prosoft
           ip: 192.168.8.7
-          username: "{{ prosoft_mount_username }}"
-          password: "{{ prosoft_mount_password }}"
+          username: "{{ prosoft_mount_username.stdout }}"
+          password: "{{ prosoft_mount_password.stdout }}"
           target_dir: B97-01_OpticalBlade
         - name: hall10-b9702u1
           mount_dir: /mnt/prosoft
           ip: 192.168.8.4
-          username: "{{ prosoft_mount_username }}"
-          password: "{{ prosoft_mount_password }}"
+          username: "{{ prosoft_mount_username.stdout }}"
+          password: "{{ prosoft_mount_password.stdout }}"
           target_dir: B97-01_OpticalBlade
