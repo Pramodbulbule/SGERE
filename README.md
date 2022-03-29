@@ -73,7 +73,7 @@ ansible-playbook -i env/<env>/<location>/<inventory-file> 06_mounts.yml --extra-
 ```
 ansible-playbook -i env/<env>/<location>/<inventory-file> -i env/<env>/<location>/<etcd-inventory-file> 07_etcd.yml
 ```
-10. Add route to laser terminal and mount necessary shares
+10. Add route to laser terminal and mount necessary shares. prosoft_mount_username and prosoft_mount_password comes from Azure Key vault
 ```
 ansible-playbook -i env/<env>/<location>/<inventory-file> 08_laser.yml --extra-vars "variable_hosts=hostname" --extra-vars prosoft_mount_username=<username> --extra-vars prosoft_mount_password=<password>
 ```
