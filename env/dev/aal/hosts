@@ -1,5 +1,5 @@
 [edgemachines]
-dkalldev1  ansible_host=192.168.8.101  deviceid="EDDEVDVLGENOBAWE01-dev1-edge-device-1"
+dkaaldev1  ansible_host=192.168.8.101 deviceid="EDDEVDVLGENOBAWE01-dev1-edge-device-1"
 dkaaldev2  ansible_host=192.168.8.102 deviceid="EDDEVDVLGENOBAWE01-dev1-edge-device-2"
 
 
