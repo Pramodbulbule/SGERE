@@ -16,6 +16,6 @@ tenant_id="12f921d8-f30d-4596-a652-7045b338485a"
 subscription_id="cbe9d379-0f71-4dbc-994b-804713d41dec"
 resource_group="RGDEVDVLGENOBAWE01"
 iothub_name="IOTDEVDVLGENOBAWE01-iot-hub-dev1-sgre"
-
+application_insights="AINDEVDVLGENOBAWE01-ain-ml"
 
 

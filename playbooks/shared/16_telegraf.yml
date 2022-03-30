@@ -2,12 +2,10 @@
   become: true
   roles:
     - telegraf-preinstall
+    - telegraf-resolve-instrumentation-key
     - dj-wasabi.telegraf
     - telegraf-postinstall
     - telegraf-hold
-  vars_prompt:
-    - name: instrumentation_key
-      prompt: Enter the Application Insights instrumentation key    
   vars:
     telegraf_agent_package_state: latest
     telegraf_agent_package_method: repo
@@ -19,7 +17,7 @@
     telegraf_agent_output:
       - type: application_insights
         config:
-          - instrumentation_key = "{{ instrumentation_key }}"
+          - instrumentation_key = {{ instrumentation_key.stdout }}
     telegraf_global_tags:
       - tag_name: stage
         tag_value: "{{ stage }}"

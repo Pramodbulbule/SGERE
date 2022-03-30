@@ -1,0 +1,5 @@
+- name: Azure login
+  shell: az login --service-principal --username {{ client_id }} --password {{ client_password }} --tenant {{ tenant_id }}
+- name: Get instrumentation_key
+  shell: az resource show -g {{ resource_group }} -n {{ application_insights }} --resource-type "microsoft.insights/components" --query properties.InstrumentationKey
+  register: instrumentation_key 
