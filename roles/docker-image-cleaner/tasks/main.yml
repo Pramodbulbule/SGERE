@@ -1,0 +1,9 @@
+- name: Delete old Docker images and containers
+  cron:
+    name: "Delete old Docker images and containers"
+    minute: "0"
+    hour: "0"
+    day: "1-31/2"
+    month: "*"
+    weekday: "*"
+    job: "docker container prune -f --filter 'until=48h' && docker image prune -a -f --filter 'until=48h'"
