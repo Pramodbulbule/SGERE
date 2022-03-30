@@ -1,0 +1,5 @@
+- name: Copy docker daemon.json
+  copy:
+    src: "../../includes/daemon.json"
+    dest: "/etc/docker"
+    mode: '0755'
