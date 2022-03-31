@@ -5,3 +5,10 @@
   async: 180
   become: yes
   notify: activate iotedge service
+- name: Create storage directory for iotedge modules
+  file:
+    path: /etc/iotedge/storage
+    state: directory
+    owner: '1000'
+    group: iotedge
+    mode: "700"
