@@ -1,6 +1,6 @@
 - name: Download MS product repository
   ansible.builtin.apt_repository:
-    repo: deb [arch=amd64] https://packages.microsoft.com/ubuntu/20.04/prod bionic main
+    repo: deb [arch=amd64] https://packages.microsoft.com/ubuntu/20.04/prod focal main
     state: present
 - name: Make sure HTTPS is supported by apt
   apt:
