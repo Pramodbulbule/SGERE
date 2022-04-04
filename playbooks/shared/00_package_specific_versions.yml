@@ -24,17 +24,17 @@
         #allow_change_held_packages: true #can be enabled in ansible 2.13
         allow_downgrades: true
         name:
-          - moby-cli=20.10.13+azure-1
-          - moby-containerd=1.5.10+azure-1
-          - moby-engine=20.10.13+azure-1
+          - moby-cli=20.10.14+azure-1
+          - moby-containerd=1.5.11+azure-1
+          - moby-engine=20.10.14+azure-1
           - moby-runc=1.0.3+azure-1 
           - iotedge=1.1.11-1
-          - linux-headers-generic=5.4.0.26.32
-          - linux-image-generic=5.4.0.105.109
+          - linux-headers-generic=5.4.0.107.111
+          - linux-image-generic=5.4.0.107.111
           - nvidia-driver-510=510.47.03-0ubuntu1
           - nvidia-container-runtime=3.9.0-1
           - nvidia-container-toolkit=1.9.0-1 
-          - cuda=11.6.1-1
+          - cuda=11.6.2-1
         state: present
     - name: Prevent packages from being upgraded
       dpkg_selections:
