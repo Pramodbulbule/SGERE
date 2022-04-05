@@ -16,7 +16,7 @@ users:
   - username: nkarthikeyan
     groups: developers
   - username: bdmadhavi
-    groups: admins    
+    groups: developers   
   - username: bashfaq
     groups: developers
   - username: bdebtaru
@@ -37,3 +37,9 @@ users:
     groups: admins
   - username: jdevendra
     groups: admins
+  - username: gsamrina
+    groups: developers
+  - username: tanitha
+    groups: developers
+  - username: mpraveen
+    groups: developers
