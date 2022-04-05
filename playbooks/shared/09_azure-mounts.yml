@@ -17,10 +17,6 @@
       fuse_cfg_name: retrain_fuse.cfg    
       mount_folder: /mnt/azure
     - role: mount-storage
-      mount_name: work-instructions
-      fuse_cfg_name: workinstructions_fuse.cfg
-      mount_folder: /mnt/azure
-    - role: mount-storage
       mount_name: calibration
       fuse_cfg_name: calibration_fuse.cfg
       mount_folder: /mnt/azure
