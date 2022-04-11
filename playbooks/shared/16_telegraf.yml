@@ -111,7 +111,7 @@
         config:
         - commands = [ "/opt/sgre/telegraf/check-mount.sh system-config /mnt/azure/system-config" ]
         - timeout = "5s"
-        - name_override = "system-config"
+        - name_override = "system_config"
         - name_suffix = ""
         - data_format = "json"
         - tag_keys = [
