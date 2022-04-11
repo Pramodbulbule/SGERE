@@ -4,3 +4,8 @@
     update_cache: yes
   async: 180
   become: yes
+
+- name: Prevent telegraf from being upgraded
+  dpkg_selections:
+    name: telegraf
+    selection: install

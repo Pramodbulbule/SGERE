@@ -5,11 +5,10 @@
     - telegraf-resolve-instrumentation-key
     - dj-wasabi.telegraf
     - telegraf-postinstall
-    - telegraf-hold
   vars:
     telegraf_agent_package_state: latest
     telegraf_agent_package_method: repo
-    telegraf_agent_package_version: 1.22.0
+    telegraf_agent_package_version: 1.22.1
     telegraf_agent_interval: 300
     telegraf_agent_debug: False
     telegraf_agent_quiet: False
@@ -166,7 +165,17 @@
         - data_format = "json"
         - tag_keys = [
             "mount"
-          ]        
+          ]
+      - plugin: exec
+        config:
+        - commands = [ "/opt/sgre/telegraf/check-space.sh /home" ]
+        - timeout = "5s"
+        - name_override = "mount_space"
+        - name_suffix = ""
+        - data_format = "json"
+        - tag_keys = [
+            "mount"
+          ]          
       - plugin: procstat
         config:
         - systemd_unit = "etcd.service"
