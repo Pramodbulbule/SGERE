@@ -109,6 +109,17 @@
           ]
       - plugin: exec
         config:
+        - commands = [ "/opt/sgre/telegraf/check-mount.sh system-config /mnt/azure/system-config" ]
+        - timeout = "5s"
+        - name_override = "system-config"
+        - name_suffix = ""
+        - data_format = "json"
+        - tag_keys = [
+            "name",
+            "path"
+          ]
+      - plugin: exec
+        config:
         - commands = [ "/opt/sgre/telegraf/check-mount.sh calibration /mnt/azure/calibration" ]
         - timeout = "5s"
         - name_override = "calibration"
