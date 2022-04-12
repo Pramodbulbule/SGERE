@@ -1,0 +1,19 @@
+- name: Create /opt/sgre/bin directory
+  file:
+    path: '/opt/sgre/bin'
+    state: directory
+    mode: '0755'
+
+- name: Copy iotedge-reset utility
+  copy:
+    src: "../../includes/iotedge-reset.sh"
+    dest: "/opt/sgre/bin/iotedge-reset"
+    mode: '0755'
+
+- name: add /opt/sgre/bin/ to path
+  lineinfile: >
+    dest=/etc/environment
+    state=present
+    backrefs=yes
+    regexp='PATH=(["]*)((?!.*?/opt/sgre/bin/).*?)(["]*)$'
+    line="PATH=\1\2:/opt/sgre/bin/\3"
