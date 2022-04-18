@@ -5,3 +5,4 @@
     - install-nload
     - install-log-formatter
     - install-iotedge-reset
+    - install-nvtop
