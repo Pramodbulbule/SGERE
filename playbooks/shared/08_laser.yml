@@ -1,7 +1,10 @@
 - hosts: "{{ variable_hosts | default('all') }}"
+  become: true
   vars:
     prosoft_mount_username_keyvault_key: prosoft-mount-username
     prosoft_mount_password_keyvault_key: prosoft-mount-password
+  roles:
+    - azure-cli    
   tasks:
     - name: Azure login
       shell: az login --service-principal --username {{ client_id }} --password {{ client_password }} --tenant {{ tenant_id }}
@@ -17,6 +20,12 @@
       vars:
         mount_info: "{{ item }}"
       with_items:
+        - name: hall10-b9701u1
+          mount_dir: /mnt/prosoft
+          ip: 192.168.15.113
+          username: "{{ prosoft_mount_username.stdout }}"
+          password: "{{ prosoft_mount_password.stdout }}"
+          target_dir: B97-01_OpticalBlade      
         - name: hall10-b9701u2
           mount_dir: /mnt/prosoft
           ip: 192.168.8.5
