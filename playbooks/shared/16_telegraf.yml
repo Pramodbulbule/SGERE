@@ -145,6 +145,18 @@
             "name",
             "path"
           ]
+
+      - plugin: exec
+        config:
+        - commands = [ "/opt/sgre/telegraf/check-mount.sh blade-design /mnt/azure/blade-design" ]
+        - timeout = "5s"
+        - name_override = "blade_design"
+        - name_suffix = ""
+        - data_format = "json"
+        - tag_keys = [
+            "name",
+            "path"
+          ]    
       - plugin: exec
         config:
         - commands = [ "/opt/sgre/telegraf/check-container.sh laser-hub" ]
@@ -197,4 +209,4 @@
         - systemd_unit = "etcd.service"
       - plugin: procstat
         config:
-        - systemd_unit = "iotedge.service"
+        - systemd_unit = "iotedge.service" 
