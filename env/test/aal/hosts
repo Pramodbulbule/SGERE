@@ -1,8 +1,8 @@
 [edgemachines]
-dkalledgetest1 ansible_host=192.168.8.90 deviceid="EDQLTDVLGENOBAWE01-qlt-edge-1"
-dkalledgetest2 ansible_host=192.168.8.91 deviceid="EDQLTDVLGENOBAWE01-qlt-edge-2"
-dkalledgetest3 ansible_host=192.168.8.92 deviceid="EDQLTDVLGENOBAWE01-qlt-edge-3"
-dkalledgetest4 ansible_host=192.168.8.93 deviceid="EDQLTDVLGENOBAWE01-qlt-edge-4"
+dkaaltest1 ansible_host=192.168.8.90 deviceid="EDQLTDVLGENOBAWE01-qlt-edge-1"
+dkaaltest2 ansible_host=192.168.8.91 deviceid="EDQLTDVLGENOBAWE01-qlt-edge-2"
+dkaaltest3 ansible_host=192.168.8.92 deviceid="EDQLTDVLGENOBAWE01-qlt-edge-3"
+dkaaltest4 ansible_host=192.168.8.93 deviceid="EDQLTDVLGENOBAWE01-qlt-edge-4"
 
 [all:vars]
 default_user=sgre

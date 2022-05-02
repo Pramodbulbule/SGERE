@@ -1,6 +1,12 @@
 [etcd]
-dkalledgetest[1:2]
+dkaaltest1
+dkaaltest2
+dkaaltest3
+dkaaltest4
 
 # voting members
 [etcd_master]
-dkalledgetest[1:2]
+dkaaltest1
+dkaaltest2
+dkaaltest3
+dkaaltest4
