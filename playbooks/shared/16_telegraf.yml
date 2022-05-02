@@ -8,7 +8,7 @@
   vars:
     telegraf_agent_package_state: latest
     telegraf_agent_package_method: repo
-    telegraf_agent_package_version: 1.22.1
+    telegraf_agent_package_version: 1.22.3
     telegraf_agent_interval: 300
     telegraf_agent_debug: False
     telegraf_agent_quiet: False
@@ -60,9 +60,14 @@
           - perdevice_include = ["blkio", "network"]
           - total = true
           - total_include = ["cpu", "blkio", "network"]
-          - fieldpass = ["n_images", "n_containers_running", "n_containers_stopped", "usage", "usage_system", "usage_total", "usage_percent", "health_status", "docker_container_cpu_usage_percent"]
+          - fieldpass = ["n_images", "n_containers_running", "n_containers_stopped", "usage", "usage_system", "usage_total", "usage_percent", "health_status", "docker_container_cpu_usage_percent", "rx_bytes", "tx_bytes"]
           - fielddrop = ["usage_system", "usage_total"]
           - container_state_include = ["created", "restarting", "running", "removing", "paused", "exited", "dead"]
+      - plugin: net
+        config:
+        - interfaces = ["ens*"]
+        - fieldpass = ["bytes_sent", "bytes_recv"]
+        - ignore_protocol_stats = true
       - plugin: exec
         config:
         - commands = [ "/opt/sgre/telegraf/check-mount.sh cad /mnt/azure/cad" ]
