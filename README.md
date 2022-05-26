@@ -121,9 +121,3 @@ Playbook(s) can be run for single barebone by overriding `variable_hosts` variab
 ```
 
 By omitting this variable ansible playbooks will be run for all hosts
-
-# Authors
-Justinas Bedzinkas - IBM (bedzinsk@lt.ibm.com)
-Sushma Kasim Prakash - SGRE (sushma.kasim@siemensgamesa.com)
-
-
