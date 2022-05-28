@@ -9,10 +9,6 @@
       fuse_cfg_name: mlmodels_fuse.cfg
       mount_folder: /mnt/azure
     - role: mount-storage
-      mount_name: cad
-      fuse_cfg_name: cad_data_fuse.cfg
-      mount_folder: /mnt/azure
-    - role: mount-storage
       mount_name: retrain
       fuse_cfg_name: retrain_fuse.cfg    
       mount_folder: /mnt/azure

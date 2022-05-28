@@ -8,7 +8,7 @@
   vars:
     telegraf_agent_package_state: latest
     telegraf_agent_package_method: repo
-    telegraf_agent_package_version: 1.22.3
+    telegraf_agent_package_version: 1.22.4
     telegraf_agent_interval: 300
     telegraf_agent_debug: False
     telegraf_agent_quiet: False
@@ -68,17 +68,6 @@
         - interfaces = ["ens*"]
         - fieldpass = ["bytes_sent", "bytes_recv"]
         - ignore_protocol_stats = true
-      - plugin: exec
-        config:
-        - commands = [ "/opt/sgre/telegraf/check-mount.sh cad /mnt/azure/cad" ]
-        - timeout = "5s"
-        - name_override = "cad"
-        - name_suffix = ""
-        - data_format = "json"
-        - tag_keys = [
-            "name",
-            "path"
-          ]
       - plugin: exec
         config:
         - commands = [ "/opt/sgre/telegraf/check-mount.sh camera-params /mnt/azure/camera-params" ]

@@ -17,7 +17,7 @@ This module uses active user's private/public key pair, thus the the image canno
 | **06_mounts.yml** | Mount NFS and second partition under /mnt |
 | **07_etcd.yml** | Install etcd server |
 | **08_laser.yml** | Mount DXF folder |
-| **09_azure-mounts.yml** | Mount azure storage containers (models, cad, groundtruth, cameraparams, retrain) |
+| **09_azure-mounts.yml** | Mount azure storage containers (models, blade-design, data-provisioning, cameraparams, retrain) |
 | **10_hosts.yml** | Update hosts files to contain edge machines hostnames |
 | **11_window_manager.yml** | Install XFCE windows manager and VNC server |
 | **12_pip3.yml** | Install pip |
