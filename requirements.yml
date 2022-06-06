@@ -7,3 +7,4 @@ roles:
 - name: oefenweb.fail2ban
 - name: andrewrothstein.etcd-cluster
 - name: dj-wasabi.telegraf
+- name: weareinteractive.apt

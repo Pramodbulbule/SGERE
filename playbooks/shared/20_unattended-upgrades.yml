@@ -1,0 +1,18 @@
+- hosts: "{{ variable_hosts | default('all') }}"
+  become: true
+  roles:
+    - weareinteractive.apt
+  
+  vars:
+     apt_unattended_upgrades_syslog_enable: yes
+     apt_unattended_upgrades_upgrade_timer_override:
+       on_calendar_replace:
+       on_calendar: 'Mon..Fri --* 05:00'
+       randomized_delay_sec: 60
+       persistent: true   
+     apt_unattended_upgrades_allowed:
+     - ${distro_id}:${distro_codename}-security
+     - ${distro_id}:${distro_codename}-updates
+     - microsoft-ubuntu-${distro_codename}-prod ${distro_codename}:${distro_codename}
+     - azure-cli ${distro_codename}:${distro_codename}
+     
