@@ -43,7 +43,7 @@
         config:
           - attributes = true
           - devices = [ "/dev/sda" ]
-          - path = "/usr/sbin/smartctl"
+          - path_smartctl = "/usr/sbin/smartctl"
           - use_sudo = true          
       - plugin: system
         config:
@@ -58,7 +58,6 @@
         config:
           - perdevice = false
           - perdevice_include = ["blkio", "network"]
-          - total = true
           - total_include = ["cpu", "blkio", "network"]
           - fieldpass = ["n_images", "n_containers_running", "n_containers_stopped", "usage", "usage_system", "usage_total", "usage_percent", "health_status", "docker_container_cpu_usage_percent", "rx_bytes", "tx_bytes"]
           - fielddrop = ["usage_system", "usage_total"]
@@ -182,17 +181,7 @@
         - data_format = "json"
         - tag_keys = [
             "mount"
-          ]
-      - plugin: exec
-        config:
-        - commands = [ "/opt/sgre/telegraf/check-space.sh /home" ]
-        - timeout = "5s"
-        - name_override = "mount_space"
-        - name_suffix = ""
-        - data_format = "json"
-        - tag_keys = [
-            "mount"
-          ]          
+          ]         
       - plugin: procstat
         config:
         - systemd_unit = "etcd.service"
