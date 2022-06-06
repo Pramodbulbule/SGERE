@@ -14,7 +14,7 @@ This module uses active user's private/public key pair, thus the the image canno
 | **03_iotedge.yml** | Install IoT Edge dependencies |
 | **04_hardening.yml** | Harden the server OS and SSH service |
 | **05_fail2ban.yml** | Install fail2ban tool |
-| **06_mounts.yml** | Mount NFS and second partition under /mnt |
+| **06_mounts.yml** | Mount data-partition under /mnt |
 | **07_etcd.yml** | Install etcd server |
 | **08_laser.yml** | Mount DXF folder |
 | **09_azure-mounts.yml** | Mount azure storage containers (models, blade-design, data-provisioning, cameraparams, retrain) |
@@ -65,7 +65,7 @@ ansible-playbook -i env/<env>/<location>/<inventory-file> 04_hardening.yml --ext
 ```
 ansible-playbook -i env/<env>/<location>/<inventory-file> 05_fail2ban.yml --extra-vars "variable_hosts=hostname"
 ```
-8. Mount second partition, NFS drive and other mounts if needed
+8. Mount data-partition drive and other mounts if needed
 ```
 ansible-playbook -i env/<env>/<location>/<inventory-file> 06_mounts.yml --extra-vars "variable_hosts=hostname"
 ```

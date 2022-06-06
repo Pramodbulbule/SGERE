@@ -1,7 +1,6 @@
-# Mount nfs drive
+# Mount data-partition
 - hosts: "{{ variable_hosts | default('all') }}"
   become: true
   roles:
-    - mount-nfs
     - mount-data-partition
 
