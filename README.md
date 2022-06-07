@@ -112,6 +112,15 @@ ansible-playbook -i env/<env>/<location>/<inventory-file> 16_telegraf.yml --extr
 19. Install specific versions of packages
 ```
 ansible-playbook -i env/<env>/<location>/<inventory-file> 00_package_specific_versions.yml --extra-vars "variable_hosts=hostname"
+
+20. Unattended security upgrades on the server
+
+ansible-playbook -i env/<env>/<location>/<inventory-file> 20_unattended-upgrades.yml --extra-vars "variable_hosts=hostname"
+
+21. To remove users from the and their home directory from server
+
+ansible-playbook -i env/<env>/<location>/<inventory-file> 21_remove_user.yml --extra-vars "variable_hosts=hostname"
+
 ```
 # Working with single barebone
 

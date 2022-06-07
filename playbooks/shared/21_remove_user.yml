@@ -1,0 +1,14 @@
+  - hosts: "{{ variable_hosts | default('all') }}"
+    become: true
+    vars_prompt:
+
+      - name: username
+        prompt: What username is to be removed?
+        private: no
+    
+    tasks:
+      - name: Remove User
+        ansible.builtin.user:
+          name: '{{ username }}'
+          state: "absent"
+          remove: true
