@@ -25,13 +25,13 @@
         allow_downgrades: true
         name:
           - moby-cli=20.10.16+azure-3
-          - moby-containerd=1.5.11+azure-1
+          - moby-containerd=1.5.13+azure-ubuntu20.04u1
           - moby-engine=20.10.16+azure-2
           - moby-runc=1.0.3+azure-1 
           - iotedge=1.1.13-1
-          - linux-headers-generic=5.4.0.113.117
-          - linux-image-generic=5.4.0.113.117
-          - nvidia-driver-515=515.43.04-0ubuntu1
+          - linux-headers-generic=5.4.0.117.120
+          - linux-image-generic=5.4.0.117.120
+          - nvidia-driver-515=515.48.07-0ubuntu1
           - nvidia-container-runtime=3.9.0-1
           - nvidia-container-toolkit=1.9.0-1 
           - cuda=11.7.0-1
