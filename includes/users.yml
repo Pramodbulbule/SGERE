@@ -1,11 +1,7 @@
 users:
   - username: ksushma
     groups: admins
-  - username: brevanasiddappa
-    groups: developers
   - username: mhoffmann
-    groups: admins
-  - username: jabhishek
     groups: admins
   - username: mkolipost
     groups: developers
@@ -43,3 +39,5 @@ users:
     groups: developers
   - username: mpraveen
     groups: developers
+  - username: kpranjall
+    groups: developers    
