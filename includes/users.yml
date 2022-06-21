@@ -12,13 +12,13 @@ users:
   - username: nkarthikeyan
     groups: developers
   - username: bdmadhavi
-    groups: developers   
+    groups: developers
   - username: bashfaq
     groups: developers
   - username: bdebtaru
     groups: developers
   - username: ckaran
-    groups: admins    
+    groups: admins
   - username: zzaiyong
     groups: developers
   - username: mskaringa
@@ -40,4 +40,6 @@ users:
   - username: mpraveen
     groups: developers
   - username: kpranjall
-    groups: developers    
+    groups: developers
+  - username: adubinina
+    groups: admins
