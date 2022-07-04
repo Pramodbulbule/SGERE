@@ -22,5 +22,10 @@ users:
   - username: bdebtaru
     groups: developers
   - username: ckaran
-    groups: admins    
+    groups: admins
+    groups: developers
+  - username: vkishore
+    groups: admins
+  - username: kprithvi
+    groups: admins 
     
