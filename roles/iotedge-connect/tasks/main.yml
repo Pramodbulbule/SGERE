@@ -1,14 +1,3 @@
-- name: Add yq repository from PPA
-  apt_repository:
-    repo: ppa:rmescandon/yq
-
-- name: Install yq
-  apt:
-    name: ["yq"]
-    update_cache: yes
-  async: 180
-  become: yes
-  
 - name: az login
   shell: az login --service-principal --username {{ client_id }} --password {{ client_password }} --tenant {{ tenant_id }}
 
@@ -19,17 +8,20 @@
   shell: az config set extension.use_dynamic_install=yes_without_prompt && az iot hub device-identity connection-string show --device-id {{ deviceid }} --hub-name {{ iothub_name }} --key-type primary --resource-group {{ resource_group }} --query [connectionString] -o tsv
   register: connection_string
 
-- name: Setting connection string and protocol
-  shell: |
-      yq eval -i '.provisioning.device_connection_string = "{{ connection_string.stdout }}"'  /etc/aziot/config.toml
-      yq eval -i '.agent.env.UpstreamProtocol = "AmqpWs"' /etc/aziot/config.toml
-  become: yes
-  notify: restart iotedge service
-
-- name: Fix permissions for /etc/aziot/config.toml
-  file:
+- name: Searching for a String
+  lineinfile:
     path: /etc/aziot/config.toml
-    mode: '0400'
-    state: 'file'
-    owner: iotedge
-    group: iotedge
+    regexp: '^upstreamProtocol*whatever'
+    state: absent
+  check_mode: yes
+  changed_when: false
+  register: upstreamProtocol
+
+- name: Write upstreamProtocol in file
+  become: yes
+  lineinfile:
+    path: /etc/aziot/config.toml
+    insertafter: imagePullPolicy = "on-create"
+    line: upstreamProtocol = "AmqpWs"
+    state: present
+  when: not upstreamProtocol.found

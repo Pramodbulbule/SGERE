@@ -1,5 +1,5 @@
 - name: Remove aziot packages
   apt:
-    pkg: aziot*
+    pkg: iotedge
     state: absent
   become: true
