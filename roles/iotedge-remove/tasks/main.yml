@@ -1,0 +1,5 @@
+- name: Remove aziot packages
+  apt:
+    pkg: aziot*
+    state: absent
+  become: true

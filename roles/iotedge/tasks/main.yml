@@ -1,6 +1,8 @@
 - name: Install iotedge
   apt:
-    name: ["iotedge"]
+    name:
+      - aziot-edge=1.2.10-1
+      - aziot-identity-service=1.2.6-1
     update_cache: yes
   async: 180
   become: yes

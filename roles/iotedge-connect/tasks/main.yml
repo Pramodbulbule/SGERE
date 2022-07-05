@@ -21,14 +21,14 @@
 
 - name: Setting connection string and protocol
   shell: |
-      yq eval -i '.provisioning.device_connection_string = "{{ connection_string.stdout }}"' /etc/iotedge/config.yaml
-      yq eval -i '.agent.env.UpstreamProtocol = "AmqpWs"' /etc/iotedge/config.yaml
+      yq eval -i '.provisioning.device_connection_string = "{{ connection_string.stdout }}"'  /etc/aziot/config.toml
+      yq eval -i '.agent.env.UpstreamProtocol = "AmqpWs"' /etc/aziot/config.toml
   become: yes
   notify: restart iotedge service
 
-- name: Fix permissions for /etc/iotedge/config.yaml
+- name: Fix permissions for /etc/aziot/config.toml
   file:
-    path: /etc/iotedge/config.yaml
+    path: /etc/aziot/config.toml
     mode: '0400'
     state: 'file'
     owner: iotedge

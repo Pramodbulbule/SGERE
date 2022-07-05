@@ -2,6 +2,7 @@
 - hosts: "{{ variable_hosts | default('all') }}"
   become: true
   roles:
+    - iotedge-remove
     - ms-repo
     - moby
     - docker-daemon-configuration
