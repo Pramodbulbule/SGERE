@@ -10,7 +10,7 @@
       mount_folder: /mnt/azure
     - role: mount-storage
       mount_name: retrain
-      fuse_cfg_name: retrain_fuse.cfg    
+      fuse_cfg_name: retrain_fuse.cfg
       mount_folder: /mnt/azure
     - role: mount-storage
       mount_name: calibration
@@ -31,4 +31,8 @@
     - role: mount-storage
       mount_name: system-config
       fuse_cfg_name: system_config_fuse.cfg
-      mount_folder: /mnt/azure      
+      mount_folder: /mnt/azure
+    - role: mount-storage
+      mount_name: message-output
+      fuse_cfg_name: message_output_fuse.cfg
+      mount_folder: /mnt/azure
