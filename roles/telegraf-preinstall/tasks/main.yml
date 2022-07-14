@@ -1,6 +1,6 @@
-- name: Install nvme-cli and smartmontools for telegraf smart plugin
+- name: Install nvme-cli, smartmontools and lm-sensors for telegraf smart plugin
   apt:
-    name: ["nvme-cli", "smartmontools"]
+    name: ["nvme-cli", "smartmontools", "lm-sensors"]
     update_cache: yes
   async: 180
   become: yes

@@ -8,7 +8,7 @@
   vars:
     telegraf_agent_package_state: latest
     telegraf_agent_package_method: repo
-    telegraf_agent_package_version: 1.22.4
+    telegraf_agent_package_version: 1.23.2
     telegraf_agent_interval: 300
     telegraf_agent_debug: False
     telegraf_agent_quiet: False
@@ -21,7 +21,7 @@
       - tag_name: stage
         tag_value: "{{ stage }}"
       - tag_name: location
-        tag_value: "{{ location }}"      
+        tag_value: "{{ location }}"
       - tag_name: host
         tag_value: "{{ ansible_nodename }}"
     telegraf_plugins_default:
@@ -44,7 +44,7 @@
           - attributes = true
           - devices = [ "/dev/sda" ]
           - path_smartctl = "/usr/sbin/smartctl"
-          - use_sudo = true          
+          - use_sudo = true
       - plugin: system
         config:
           - fieldpass = ["uptime","n_cpus"]
@@ -144,7 +144,7 @@
         - tag_keys = [
             "name",
             "path"
-          ]    
+          ]
       - plugin: exec
         config:
         - commands = [ "/opt/sgre/telegraf/check-container.sh laser-hub" ]
@@ -161,7 +161,7 @@
         - timeout = "5s"
         - name_override = "nvidia_smi"
         - name_suffix = ""
-        - data_format = "json"   
+        - data_format = "json"
       - plugin: exec
         config:
         - commands = [ "/opt/sgre/telegraf/check-space.sh /" ]
@@ -171,7 +171,7 @@
         - data_format = "json"
         - tag_keys = [
             "mount"
-          ]        
+          ]
       - plugin: exec
         config:
         - commands = [ "/opt/sgre/telegraf/check-space.sh /home" ]
@@ -181,10 +181,10 @@
         - data_format = "json"
         - tag_keys = [
             "mount"
-          ]         
+          ]
       - plugin: procstat
         config:
         - systemd_unit = "etcd.service"
       - plugin: procstat
         config:
-        - systemd_unit = "iotedge.service" 
+        - systemd_unit = "iotedge.service"
