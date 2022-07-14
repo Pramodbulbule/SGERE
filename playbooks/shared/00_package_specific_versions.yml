@@ -28,9 +28,9 @@
           - moby-containerd=1.5.13+azure-ubuntu20.04u1
           - moby-engine=20.10.17+azure-ubuntu20.04u1
           - moby-runc=1.0.3+azure-1 
-          - iotedge=1.1.13-1
-          - linux-headers-generic=5.4.0.120.121
-          - linux-image-generic=5.4.0.120.121
+          - iotedge=1.1.15-1
+          - linux-headers-generic=5.4.0.122.123
+          - linux-image-generic=5.4.0.122.123
           - nvidia-driver-515=515.48.07-0ubuntu1
           - nvidia-container-runtime=3.10.0-1
           - nvidia-container-toolkit=1.10.0-1 
