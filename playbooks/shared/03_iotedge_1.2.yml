@@ -1,0 +1,13 @@
+# Install iotedge
+- hosts: "{{ variable_hosts | default('all') }}"
+  become: true
+  roles:
+    - iotedge-remove
+    - ms-repo
+    - moby
+    - docker-daemon-configuration
+    - role: iotedge_1.2
+      vars:
+        iotedge_version: aziot-edge=1.2.10-1
+        identity_service_version: aziot-identity-service=1.2.6-1
+    - iotedge-connect_1.2

@@ -1,0 +1,11 @@
+- name: Unhold iotedge
+  dpkg_selections:
+    name: iotedge
+    selection: install
+
+- name: Remove iotedge package
+  become: yes
+  ansible.builtin.apt:
+    purge: yes
+    name: iotedge
+    state: absent
