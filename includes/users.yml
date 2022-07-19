@@ -43,3 +43,5 @@ users:
     groups: developers
   - username: adubinina
     groups: admins
+  - username: vkishore
+    groups :admins  
