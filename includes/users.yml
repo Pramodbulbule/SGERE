@@ -13,8 +13,6 @@ users:
     groups: developers
   - username: bdmadhavi
     groups: developers
-  - username: bashfaq
-    groups: developers
   - username: bdebtaru
     groups: developers
   - username: ckaran
@@ -45,4 +43,3 @@ users:
     groups: admins
   - username : vkishore
     groups: admins
-  
