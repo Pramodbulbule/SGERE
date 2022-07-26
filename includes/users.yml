@@ -1,6 +1,4 @@
 users:
-  - username: ksushma
-    groups: admins
   - username: mhoffmann
     groups: admins
   - username: mkolipost
