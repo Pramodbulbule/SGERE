@@ -31,12 +31,8 @@
   shell: cat /etc/fuse_connections/{{ fuse_cfg_name }} | grep accountName | awk '{print $2}'
   register: storage_account_name
 
-- name: Retrieve Container name from cfg file
-  shell: cat /etc/fuse_connections/{{ fuse_cfg_name }} | grep containerName | awk '{print $2}'
-  register: container_name
-
 - name: Retrieve secret
-  command: az storage container generate-sas --account-name {{ storage_account_name.stdout }} --expiry {{ end_date.stdout }} --name {{ container_name.stdout }} --permissions dlrw --only-show-errors -o tsv
+  command: az storage container generate-sas --account-name {{ storage_account_name.stdout }} --expiry {{ end_date.stdout }} --name {{ container_name }} --permissions dlrw --only-show-errors -o tsv
   register: sas_token_value
 
 - name: "Replace sas token value in cfg files"
@@ -44,6 +40,12 @@
     path: /etc/fuse_connections/{{ fuse_cfg_name }}
     regexp: 'sasToken'
     replace: 'sasToken {{ sas_token_value.stdout }}'
+
+- name: "Replace containerName value in cfg files"
+  ansible.builtin.replace:
+    path: /etc/fuse_connections/{{ fuse_cfg_name }}
+    regexp: 'containerName'
+    replace: 'containerName {{ container_name }}'
 
 - name: Create mount directory if it does not exist
   file:
