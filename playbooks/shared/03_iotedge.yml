@@ -2,8 +2,13 @@
 - hosts: "{{ variable_hosts | default('all') }}"
   become: true
   roles:
+    - iotedge-remove
     - ms-repo
     - moby
     - docker-daemon-configuration
-    - iotedge
+    - role: iotedge
+      vars:
+        iotedge_version: aziot-edge=1.4.0-1
+        identity_service_version: aziot-identity-service=1.4.0-1
+        defender_iot_micro_agent_edge: defender-iot-micro-agent-edge=4.2.6
     - iotedge-connect

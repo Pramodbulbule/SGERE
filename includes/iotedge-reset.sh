@@ -1,9 +1,11 @@
 #!/bin/sh
 docker container prune -f
 docker image prune -a -f
-systemctl stop iotedge
-rm -r /var/lib/iotedge/hsm/*
-rm -r /var/lib/iotedge/mnt/*
-rm -r /var/lib/iotedge/cache/*
+systemctl stop aziot-edged
+rm -r /var/lib/aziot/certd/*
+rm -r /var/lib/aziot/edged/*
+rm -r /var/lib/aziot/identityd/*
+rm -r /var/lib/aziot/keyd/*
+rm -r /var/lib/aziot/tpmd/*
 rm -r /etc/iotedge/storage/*
-systemctl start iotedge
+systemctl start aziot-edged

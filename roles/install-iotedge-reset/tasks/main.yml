@@ -4,10 +4,10 @@
     state: directory
     mode: '0755'
 
-- name: Copy iotedge-reset utility
+- name: Copy iotedge-reset-1.2 utility
   copy:
-    src: "../../includes/iotedge-reset.sh"
-    dest: "/opt/sgre/bin/iotedge-reset"
+    src: "../../includes/iotedge-reset-1.2.sh"
+    dest: "/opt/sgre/bin/iotedge-reset-1.2"
     mode: '0755'
 
 - name: add /opt/sgre/bin/ to path

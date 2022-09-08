@@ -1,14 +1,32 @@
-- name: Install iotedge
+- name: Install aziot-edged 
   apt:
-    name: ["iotedge"]
+    name:
+      - "{{ iotedge_version }}"
+      - "{{ identity_service_version }}"
+      - "{{ defender_iot_micro_agent_edge }}"
     update_cache: yes
   async: 180
   become: yes
-  notify: activate iotedge service
+  notify: activate aziot-edged service
+
+- name: Create storage directory for iotedge modules with 13622
+  file:
+    path: /etc/iotedge/storage/edgeAgent
+    state: directory
+    owner: '13622'
+    group: "13622"
+
+- name: Create storage directory for iotedge modules with 13623
+  file:
+    path: /etc/iotedge/storage/edgeHub
+    state: directory
+    owner: '13623'
+    group: "13623"
+
 - name: Create storage directory for iotedge modules
   file:
     path: /etc/iotedge/storage
     state: directory
     owner: '1000'
     group: iotedge
-    mode: "700"
+    mode: "777"

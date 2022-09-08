@@ -1,5 +1,5 @@
-- name: restart iotedge service
+- name: restart aziot-edge service
   become: yes
   service:
-    name: iotedge
+    name: aziot-edged
     state: restarted

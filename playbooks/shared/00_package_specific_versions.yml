@@ -26,9 +26,9 @@
         name:
           - moby-cli=20.10.17+azure-ubuntu20.04u1
           - moby-containerd=1.5.13+azure-ubuntu20.04u1
-          - moby-engine=20.10.17+azure-ubuntu20.04u1
+          - moby-engine=20.10.17+azure-ubuntu20.04u3
           - moby-runc=1.0.3+azure-1 
-          - aziot-edge=1.2.10-1
+          - aziot-edge=1.4.0-1
           - linux-headers-generic=5.4.0.122.123
           - linux-image-generic=5.4.0.122.123
           - nvidia-driver-515=515.48.07-0ubuntu1

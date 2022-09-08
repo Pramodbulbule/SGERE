@@ -1,5 +1,0 @@
-- name: restart aziot-edge service
-  become: yes
-  service:
-    name: aziot-edged
-    state: restarted

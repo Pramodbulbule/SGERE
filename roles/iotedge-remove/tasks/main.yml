@@ -1,11 +1,10 @@
-- name: Unhold iotedge
+- name: Unhold aziot-edge
   dpkg_selections:
-    name: iotedge
+    name: aziot-edge
     selection: install
 
-- name: Remove iotedge package
-  become: yes
-  ansible.builtin.apt:
-    purge: yes
-    name: iotedge
-    state: absent
+
+- name: Unhold aziot-identity-service
+  dpkg_selections:
+    name: aziot-identity-service
+    selection: install

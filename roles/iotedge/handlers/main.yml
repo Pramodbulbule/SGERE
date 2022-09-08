@@ -1,6 +1,6 @@
-- name: activate iotedge service
+- name: activate aziot-edged service
   become: yes
   systemd:
     daemon_reload: yes
     enabled: yes
-    name: iotedge
+    name: aziot-edged
