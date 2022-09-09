@@ -8,12 +8,10 @@ variables:
   FABRIC_CFG_PATH: /usr/local/- task: Bash@3
   inputs:
     targetType: 'inline'
-    script: |
+     script: |
       #!/bin/bash
-      
       /home/azuredevopsagent/do-ob-em-dops-provisioning/scripts/run_container.sh
       cp env/prod/leh/hosts /etc/ansible/hosts
-      
       ansible-playbook -i env/prod/leh/hosts playbooks/shared/05_fail2ban.yml --extra-vars "variable_hosts=PRODOB001XFRL4"
 
 steps:
