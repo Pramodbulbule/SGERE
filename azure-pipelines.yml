@@ -1,5 +1,5 @@
 trigger:
-- master
+- none
 
 pool:
   vmImage: 'ubuntu-latest'
@@ -48,3 +48,8 @@ steps:
       ansible-playbook --extra-vars state=absent playbook.yml
     workingDirectory: two-org-network
     displayName: Run Playbook (two-org-network)
+- task: CopyFilesOverSSH@0
+  inputs:
+    sshEndpoint: 'ANSIBLEVMSSH'
+    contents: '**'
+    readyTimeout: '20000'
