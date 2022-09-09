@@ -10,7 +10,7 @@ variables:
 steps:
 
   - script: |
-  - task: SSH@0
+- task: SSH@0
     inputs:
     runOptions: 'inline'
     inline: 'ansible-playbook -i env/prod/leh/hosts playbooks/shared/01_users.yml --extra-vars "@includes/default-user.json" -Kk --extra-vars "variable_hosts=PRODOB001XFRL4"'
