@@ -5,11 +5,46 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
- # FABRIC_CFG_PATH: /usr/local/config
+ # FABRIC_CFG_PATH: /usr/local/confis
 
 steps:
-  - task: CopyFilesOverSSH@0
+  - script: sudo apt-get update && sudo apt-get install -y moreutils
+    displayName: Install Ubuntu dependencies
+  - task: UsePythonVersion@0
     inputs:
-      sshEndpoint: 'ANSIBLEVMSSH'
-      contents: '**'
-      readyTimeout: '20000'
+      versionSpec: "3.x"
+    displayName: Use Python 3.x
+  - script: pip install ansible docker
+    displayName: Install Python dependencies
+  - script: |
+      set -ex
+      mvn dependency:get -DremoteRepositories=https://nexus.hyperledger.org/content/repositories/snapshots -Dartifact=org.hyperledger.fabric:hyperledger-fabric-1.4.4-stable:linux-amd64.1.4.4-stable-SNAPSHOT:tar.gz
+      mvn dependency:copy -Dartifact=org.hyperledger.fabric:hyperledger-fabric-1.4.4-stable:linux-amd64.1.4.4-stable-SNAPSHOT:tar.gz -DoutputDirectory=/tmp
+      cd /usr/local
+      sudo tar xzvf /tmp/hyperledger-fabric-1.4.4-stable-linux-amd64.1.4.4-stable-SNAPSHOT.tar.gz
+    displayName: Download Fabric CLI
+  - script: |
+      set -ex
+      mvn dependency:get -DremoteRepositories=https://nexus.hyperledger.org/content/repositories/snapshots -Dartifact=org.hyperledger.fabric-ca:hyperledger-fabric-ca-1.4.4-stable:linux-amd64.1.4.4-stable-SNAPSHOT:tar.gz
+      mvn dependency:copy -Dartifact=org.hyperledger.fabric-ca:hyperledger-fabric-ca-1.4.4-stable:linux-amd64.1.4.4-stable-SNAPSHOT:tar.gz -DoutputDirectory=/tmp
+      cd /usr/local
+      sudo tar xzvf /tmp/hyperledger-fabric-ca-1.4.4-stable-linux-amd64.1.4.4-stable-SNAPSHOT.tar.gz
+    displayName: Download Fabric CA CLI
+  - script: ansible-galaxy install -r requirements.yml --force
+    workingDirectory: one-org-network
+    displayName: Install Playbook dependencies (one-org-network)
+  - script: |
+      set -ex
+      ansible-playbook playbook.yml
+      ansible-playbook --extra-vars state=absent playbook.yml
+    workingDirectory: one-org-network
+    displayName: Run Playbook (one-org-network)
+  - script: ansible-galaxy install -r requirements.yml --force
+    workingDirectory: two-org-network
+    displayName: Install Playbook dependencies (two-org-network)
+  - script: |
+      set -ex
+      ansible-playbook playbook.yml
+      ansible-playbook --extra-vars state=absent playbook.yml
+    workingDirectory: two-org-network
+    displayName: Run Playbook (two-org-network)
