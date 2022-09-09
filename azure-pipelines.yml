@@ -1,21 +1,61 @@
-trigger:
-- none
 
-pool:
-  vmImage: 'ubuntu-latest'
-
-variables:
-  FABRIC_CFG_PATH: /usr/local/- task: Bash@3
-  inputs:
-    targetType: 'inline'
-     script: |
-      #!/bin/bash
-      /home/azuredevopsagent/do-ob-em-dops-provisioning/scripts/run_container.sh
-      cp env/prod/leh/hosts /etc/ansible/hosts
-      ansible-playbook -i env/prod/leh/hosts playbooks/shared/05_fail2ban.yml --extra-vars "variable_hosts=PRODOB001XFRL4"
-
-steps:
-
+# A pipeline with no CI trigger
+trigger: none
  
+# No PR triggers
+pr: none
+ 
+stages:
+- stage: build_test
+  displayName: Build and Test
+  jobs:
+  - job: build_test
+    pool:
+      vmImage: 'windows-latest' # Currently Windows 2019 and Visual Studio 2019
+    steps:
+    - script: echo Code Built and Tested!
+ 
+- stage: release
+  displayName: Release
+  dependsOn: build_test
+  jobs:
+   - job: deploy_ansible
+     pool:
+       vmImage: 'ubuntu-latest' # Currently Ubuntu 18.04
+     steps:
+      - task: AzureCLI@2
+        displayName: 'Azure CLI '
+        inputs:
+          azureSubscription: 'Twisters Portal'
+          scriptType: bash
+          scriptLocation: inlineScript
+          inlineScript: |
+            echo "##vso[task.setvariable variable=ARM_SUBSCRIPTION_ID]$(az account show --query="id" -o tsv)"
+            echo "##vso[task.setvariable variable=ARM_CLIENT_ID]$servicePrincipalId"
+            echo "##vso[task.setvariable variable=ARM_CLIENT_SECRET]$servicePrincipalKey"
+            echo "##vso[task.setvariable variable=ARM_TENANT_ID]$tenantId"
+          addSpnToEnvironment: true    
+ 
+      - bash: |
+          touch ~/.azure/credentials
+          echo "[default]" >> ~/.azure/credentials 
+          echo "subscription_id=$(ARM_SUBSCRIPTION_ID)" >> ~/.azure/credentials  
+          echo "client_id=$(ARM_CLIENT_ID)" >> ~/.azure/credentials 
+          echo "secret=$(ARM_CLIENT_SECRET)" >> ~/.azure/credentials 
+          echo "tenant=$(ARM_TENANT_ID)" >> ~/.azure/credentials 
+           
+          pip install ansible[azure]
+        displayName: 'Install Ansible Azure + Environment'
+ 
+      - bash: |
+          ansible-playbook ./azure/storage/storage.yml --extra-vars "storage_name=$(storageName) storage_resource_group=$(storageGroup) storage_location=$(storageLocation)"
+        displayName: 'Run Playbook Script'             
+ 
+   - job: deploy_build
+     dependsOn: deploy_ansible
+     pool:
+       vmImage: 'windows-latest' # Currently Windows 2019 and Visual Studio 2019
+     steps:
+      - script: echo Deploying Code
 
 
