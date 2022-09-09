@@ -5,15 +5,19 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
-  FABRIC_CFG_PATH: /usr/local/config
+  FABRIC_CFG_PATH: /usr/local/- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: |
+      #!/bin/bash
+      
+      /home/azuredevopsagent/do-ob-em-dops-provisioning/scripts/run_container.sh
+      cp env/prod/leh/hosts /etc/ansible/hosts
+      
+      ansible-playbook -i env/prod/leh/hosts playbooks/shared/05_fail2ban.yml --extra-vars "variable_hosts=PRODOB001XFRL4"
 
 steps:
 
-  - script: |
-- task: SSH@0
-    inputs:
-    runOptions: 'inline'
-    inline: 'ansible-playbook -i env/prod/leh/hosts playbooks/shared/01_users.yml --extra-vars "@includes/default-user.json" -Kk --extra-vars "variable_hosts=PRODOB001XFRL4"'
-    readyTimeout: '20000'
+ 
 
 
