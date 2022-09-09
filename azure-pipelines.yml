@@ -5,7 +5,7 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
- # FABRIC_CFG_PATH: /usr/local/confis
+  FABRIC_CFG_PATH: /usr/local/config
 
 steps:
   - script: sudo apt-get update && sudo apt-get install -y moreutils
@@ -48,8 +48,3 @@ steps:
       ansible-playbook --extra-vars state=absent playbook.yml
     workingDirectory: two-org-network
     displayName: Run Playbook (two-org-network)
-- task: CopyFilesOverSSH@0
-  inputs:
-    sshEndpoint: 'ANSIBLEVMSSH'
-    contents: '**'
-    readyTimeout: '20000'
