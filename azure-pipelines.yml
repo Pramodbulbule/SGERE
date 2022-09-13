@@ -7,14 +7,7 @@ pr: none
  
 pool:
   name: 'linux_ob'
-- task: SSH@0
-      inputs:
-        sshEndpoint: 'ANSIBLEVMSSH'
-        runOptions: 'commands'
-        commands: |
-          ls -lart 
-          pwd
-        readyTimeout: '20000'
+
  
 - stage: release
   displayName: Release
