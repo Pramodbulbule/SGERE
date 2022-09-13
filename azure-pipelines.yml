@@ -4,12 +4,15 @@ trigger:
 - none
 pool:
   name: 'linux_ob'
-- task: SSH@0
-  inputs:
-    sshEndpoint: 'ANSIBLEVMSSH'
-    runOptions: 'commands'
-    commands: 'pwd'
-    readyTimeout: '20000'
+steps:
+  - script: sudo apt-get update && sudo apt-get install -y moreutils
+    displayName: Install Ubuntu dependencies
+  - task: UsePythonVersion@0
+    inputs:
+      versionSpec: "3.x"
+    displayName: Use Python 3.x
+  - script: pip install ansible docker
+    displayName: Install Python dependencies
 
  
 
