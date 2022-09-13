@@ -1,0 +1,10 @@
+- name: Install yq
+  apt:
+    name: ["yq"]
+    update_cache: yes
+  async: 180
+  become: yes
+- name: Change mtu value
+  shell: yq eval -i '.network.ethernets.ens1f0.mtu= 8228' /etc/netplan/00-installer-config.yaml
+  become: yes
+  notify: Applying Netplan Configuration
