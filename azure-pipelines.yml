@@ -7,7 +7,7 @@ pr: none
  
 pool:
   name: 'linux_ob'
-      - task: SSH@0
+- task: SSH@0
       inputs:
         sshEndpoint: 'ANSIBLEVMSSH'
         runOptions: 'commands'
