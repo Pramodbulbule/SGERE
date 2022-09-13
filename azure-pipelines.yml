@@ -11,7 +11,7 @@ stages:
   jobs:
   - job: build_test
     pool:
-      vmImage: 'windows-latest' # Currently Windows 2019 and Visual Studio 2019
+    name: 'linux_ob'
     steps:
     - script: echo Code Built and Tested!
     - task: SSH@0
