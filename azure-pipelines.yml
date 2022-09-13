@@ -4,17 +4,13 @@ trigger:
 - none
 pool:
   name: 'linux_ob'
-- task:- task: SSH@0
-  inputs:
-    sshEndpoint: 'ANSIBLEVMSSH'
-    runOptions: 'commands'
-    commands: 'pwd'
-    readyTimeout: '20000'SSH@0
+- task: SSH@0
   inputs:
     sshEndpoint: 'ANSIBLEVMSSH'
     runOptions: 'commands'
     commands: 'pwd'
     readyTimeout: '20000'
+ 
 
  
 
