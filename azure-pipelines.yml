@@ -5,12 +5,29 @@ trigger:
 pool:
   name: 'linux_ob'
 steps:
-- task: InstallSSHKey@0
-  displayName: 'Install an SSH key'
+- task: AzureCLI@2
+  displayName: 'Azure CLI'
   inputs:
-    knownHostsEntry: 'SHA256:1Hyr55tsxGifESBMc0s+2NtutnR/4+LOkVwrOGrIp8U johndoe@contoso'
-    sshPublicKey: '$(myPubKey)'
-    sshKeySecureFile: 'id_rsa'
+    azureSubscription: '$(SUBSCRIPTION_NAME)'
+    addSpnToEnvironment: true
+    scriptType: 'bash'
+    scriptLocation: 'inlineScript'
+    inlineScript: |
+      echo "##vso[task.setvariable variable=ARM_SUBSCRIPTION_ID]$(az account show --query="id" -o tsv)"
+      echo "##vso[task.setvariable variable=ARM_CLIENT_ID]${servicePrincipalId}"
+      echo "##vso[task.setvariable variable=ARM_CLIENT_SECRET]${servicePrincipalKey}"
+      echo "##vso[task.setvariable variable=ARM_TENANT_ID]${tenantId}"      
+- task: AzureCLI@2
+  inputs:
+    azureSubscription: 'DevOps_RGQLTDVLGENOBAWE01_contributor'
+    scriptType: 'bash'
+    scriptLocation: 'inlineScript'
+    inlineScript: |
+      echo "##vso[task.setvariable variable=ARM_SUBSCRIPTION_ID]$(az account show --query="id" -o tsv)"
+      echo "##vso[task.setvariable variable=ARM_CLIENT_ID]${servicePrincipalId}"
+      echo "##vso[task.setvariable variable=ARM_CLIENT_SECRET]${servicePrincipalKey}"
+      echo "##vso[task.setvariable variable=ARM_TENANT_ID]${tenantId}"
+    addSpnToEnvironment: true
 
  
  
