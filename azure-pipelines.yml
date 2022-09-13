@@ -14,6 +14,14 @@ stages:
       vmImage: 'windows-latest' # Currently Windows 2019 and Visual Studio 2019
     steps:
     - script: echo Code Built and Tested!
+    - task: SSH@0
+      inputs:
+        sshEndpoint: 'ANSIBLEVMSSH'
+        runOptions: 'commands'
+        commands: |
+          ls -lart 
+          pwd
+        readyTimeout: '20000'
  
 - stage: release
   displayName: Release
