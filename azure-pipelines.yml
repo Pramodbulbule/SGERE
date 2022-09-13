@@ -4,13 +4,15 @@ trigger:
 - none
 pool:
   name: 'linux_ob'
-  - task: SSH@0
+steps:
+- task: InstallSSHKey@0
+  displayName: 'Install an SSH key'
   inputs:
-    sshEndpoint: 'ANSIBLEVMSSH'
-    runOptions: 'commands'
-    commands: 'pwd'
-    readyTimeout: '20000'
+    knownHostsEntry: 'SHA256:1Hyr55tsxGifESBMc0s+2NtutnR/4+LOkVwrOGrIp8U johndoe@contoso'
+    sshPublicKey: '$(myPubKey)'
+    sshKeySecureFile: 'id_rsa'
 
+ 
  
 
  
