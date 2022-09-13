@@ -5,7 +5,6 @@ trigger: none
 # No PR triggers
 pr: none
  
-variables:
 pool:
   name: 'linux_ob'
       - task: SSH@0
