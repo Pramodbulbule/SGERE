@@ -4,11 +4,12 @@ trigger:
 - none
 pool:
   name: 'linux_ob'
-- task: InstallSSHKey@0
- inputs:
-   knownHostsEntry: #{Enter your Known Hosts Entry Here}
-   sshPublicKey: #{Enter your Public key Here}
-   sshKeySecureFile: #{Enter the name of your key in "Secure Files" Here}
+- task: SSH@0
+  inputs:
+    sshEndpoint: 'ANSIBLEVMSSH'
+    runOptions: 'commands'
+    commands: 'pwd'
+    readyTimeout: '20000'
 
  
 
