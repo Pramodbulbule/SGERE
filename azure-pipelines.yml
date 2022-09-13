@@ -5,15 +5,9 @@ trigger: none
 # No PR triggers
 pr: none
  
-stages:
-- stage: build_test
-  displayName: Build and Test
-  jobs:
-  - job: build_test
-    pool:
-    name: 'linux_ob'
-    steps:
-    - script: echo Code Built and Tested!
+variables:
+pool:
+  name: 'linux_ob'
     - task: SSH@0
       inputs:
         sshEndpoint: 'ANSIBLEVMSSH'
