@@ -4,14 +4,11 @@ trigger:
 - none
 pool:
   name: 'linux_ob'
-  - task: CopyFilesOverSSH@0
-  displayName: 'Securely copy files to the remote machine'
-   inputs:
-    sshEndpoint: test
-    sourceFolder: '$(Build.SourcesDirectory)'
-    targetFolder: /temp/
-    cleanTargetFolder: true
-    failOnEmptySource: true
+- task: InstallSSHKey@0
+ inputs:
+   knownHostsEntry: #{Enter your Known Hosts Entry Here}
+   sshPublicKey: #{Enter your Public key Here}
+   sshKeySecureFile: #{Enter the name of your key in "Secure Files" Here}
 
  
 
