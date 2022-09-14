@@ -187,4 +187,4 @@
         - systemd_unit = "etcd.service"
       - plugin: procstat
         config:
-        - systemd_unit = "iotedge.service"
+        - systemd_unit = "aziot-edged.service"
